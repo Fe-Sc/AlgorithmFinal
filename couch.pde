@@ -2,7 +2,7 @@ class Couch {
   PImage sieb;
   PImage cloth;
   Couch() {
-    sieb = loadImage("siebieblud.png");
+    sieb = loadImage("siebster.png");
     cloth = loadImage("kleedje.jpg");
   }
   void display() {
@@ -16,6 +16,6 @@ class Couch {
     vertex(760, 700, cloth.width, cloth.height);    // 200 pixels naar links vanaf de hoek (1000 - 200)
     endShape(CLOSE);
     imageMode(CENTER);
-    image(sieb, 800, 550, 200, 200);
+    image(sieb, 770, 600, 200, 200);
   }
 }

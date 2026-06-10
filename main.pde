@@ -4,12 +4,14 @@ Room room;
 Couch couch;
 Window window;
 Plant plant;
+Television television;
 
 void setup() {
   room = new Room();
   couch = new Couch();
   window = new Window();
   plant = new Plant();
+  television = new Television();
   size(1000, 700, P2D);
 }
 
@@ -19,5 +21,6 @@ void draw() {
   window.display();
   couch.display();
   plant.display();
+  television.display();
 
 }
