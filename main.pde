@@ -6,7 +6,7 @@ Couch couch;
 void setup() {
   room = new Room();
   couch = new Couch();
-  size(1000, 700);
+  size(1000, 700, P2D);
 }
 
 void draw() {
