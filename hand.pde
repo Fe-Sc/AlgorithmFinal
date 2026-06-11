@@ -6,7 +6,8 @@ class Hand {
   PVector Dragline;
   boolean dragged = false; 
   PVector basePos = new PVector(170, 570); //<>//
-
+  
+ 
   Hand(PVector position, Ball ball ) {
     hand = loadImage("hand.png");
     this.ball = ball; 
@@ -16,7 +17,12 @@ class Hand {
   void display() {
     imageMode(CENTER);
     //image(hand, 100, 600, 200, 200);
-    image(hand, mousePos.x, mousePos.y, 200, 200);
+    if (dragged){
+    image(hand, mousePos.x - 70 , mousePos.y + 30, 200, 200);
+    }
+    else{
+    image(hand, 100, 600, 200, 200);
+    }
   }
   
     void reset() {
@@ -41,9 +47,14 @@ class Hand {
   }
     void mouseDraggedEvent(PVector mouse){
   dragged = true;
-    ball.setLocation(mouse);
+    ball.setPosition(mouse);
     mousePos.set(mouse);
   ball.setAcceleration(new PVector(0, 0));
   ball.setVelocity(new PVector(0, 0));
+    if (mouseX > 400 || mouseY < 350){
+    dragged = false; 
+    ball.reset(new PVector(170, 570));
   }
+  }
+
 }

@@ -33,11 +33,12 @@ void draw() {
   ball.display();
   hand.display();
   lamp.display();
-
+  couch.update();
 }
 
 void mouseDragged() {
   hand.mouseDraggedEvent(new PVector(mouseX, mouseY));
+  
 }
 
 void mouseReleased() {

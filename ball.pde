@@ -1,56 +1,56 @@
 class Ball {
   PImage ball;
-  PVector location = new PVector();
+  PVector position = new PVector();
   PVector velocity = new PVector();
   PVector acceleration = new PVector();
 
-  Ball(PVector location, PVector velocity) {
+  Ball(PVector position, PVector velocity) {
     ball = loadImage("TennisBall.png");
-    this.location.set(location);
+    this.position.set(position);
     this.velocity.set(velocity);
     this.acceleration.set(0,0); 
   }
   
-  Ball(PVector location) {
+  Ball(PVector position) {
     ball = loadImage("TennisBall.png");
-    this.location.set(location);
+    this.position.set(position);
     this.velocity.set(0,0);
     this.acceleration.set(0,0);
   }
   
     void update() {    
-    //add here the physics of velocity and location
+    //add here the physics of velocity and position
     velocity.add(acceleration);
-    location.add(velocity);   
+    position.add(velocity);   
   }
   
   void display() {
     imageMode(CENTER);
     //makes the ball smaller/bigger the closer/further it is
-    float currentSizeW = map(location.y, 0, 600, 1, 120);
-    float currentSizeH = map(location.y, 0, 600, 1, 120); 
+    float currentSizeW = map(position.y, 0, 600, 1, 120);
+    float currentSizeH = map(position.y, 0, 600, 1, 120); 
     
     // makes sure the ball does not get too big
     currentSizeW = constrain(currentSizeW, 20, 150);
     currentSizeH = constrain(currentSizeH, 16, 125);
 
-    image(ball, location.x, location.y, currentSizeW, currentSizeH);
+    image(ball, position.x, position.y, currentSizeW, currentSizeH);
   }
   
    boolean isOutOfScreen(){
-    return (location.x < 0 || 
-            location.x > width || 
-            location.y < 0 || 
-            location.y > height);            
+    return (position.x < 0 || 
+            position.x > width || 
+            position.y < 0 || 
+            position.y > height);            
   }
-    void reset(PVector location) {
-    this.location.set(location);
+    void reset(PVector position) {
+    this.position.set(position);
     this.velocity.set(0,0);
     this.acceleration.set(0,0);
   }
 
-  void setLocation(PVector location) {
-    this.location.set(location);
+  void setPosition(PVector position) {
+    this.position.set(position);
   }
 
   void setVelocity(PVector velocity) {

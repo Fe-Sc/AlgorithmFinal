@@ -1,21 +1,31 @@
 class Couch {
+  hairSystem flyingHairs;
   PImage sieb;
   PImage cloth;
+  PVector pos = new PVector(350,400);
   Couch() {
     sieb = loadImage("siebster.png");
     cloth = loadImage("kleedje.jpg");
+    flyingHairs = new hairSystem();
+    this.pos.set(pos);
+  }
+  void update(){
+    flyingHairs.updateHair();
   }
   void display() {
     noStroke();
-    //fill(#861717);
     beginShape();
     texture(cloth);
-    vertex(997, 700, 0, cloth.height);   // Rechtsonder in de hoek van het scherm
-    vertex(850, 577, cloth.width, 0);    // Volgt de lijn omhoog naar de binnenwand
-    vertex(655, 577, 0, 0);    // 200 pixels naar links (855 - 200)
-    vertex(760, 700, cloth.width, cloth.height);    // 200 pixels naar links vanaf de hoek (1000 - 200)
+    vertex(997, 700, 0, cloth.height);  
+    vertex(850, 577, cloth.width, 0);  
+    vertex(655, 577, 0, 0);   
+    vertex(760, 700, cloth.width, cloth.height);   
     endShape(CLOSE);
     imageMode(CENTER);
     image(sieb, 770, 600, 200, 200);
+  }
+    void MouseDraggedEvent(PVector mouse){
+    pos.set(mouse);
+    flyingHairs.makeHair(new PVector(pos.x, pos.y -200));
   }
 }
