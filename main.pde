@@ -8,8 +8,10 @@ Television television;
 Hand hand;
 Lamp lamp;
 Ball ball;
+hairSystem hs;
 
 void setup() {
+  size(1000, 700, P2D);
   room = new Room();
   couch = new Couch();
   window = new Window();
@@ -18,8 +20,7 @@ void setup() {
   ball = new Ball(new PVector(170, 570));
   hand = new Hand(new PVector(100, 550), ball);
   lamp = new Lamp();
-
-  size(1000, 700, P2D);
+  hs = new hairSystem();
 }
 
 void draw() {
@@ -29,21 +30,29 @@ void draw() {
   couch.display();
   plant.display();
   television.display();
+  television.render();
   ball.update();
   ball.display();
   hand.display();
   lamp.display();
-  couch.update();
+
+  println(mouseX, mouseY);
+  hs.updateHair();
 }
 
 void mouseDragged() {
   hand.mouseDraggedEvent(new PVector(mouseX, mouseY));
-  
+  if (mouseX > 711 && mouseX < 860  && mouseY > 520 && mouseY < 676) {
+    hs.makeHair(new PVector(mouseX, mouseY));
+  }
 }
 
 void mouseReleased() {
   hand.mouseReleasedEvent();
-  
+}
+
+void mousePressed() {
+  television.click(mouseX, mouseY);
 }
 
 void keyPressed() {

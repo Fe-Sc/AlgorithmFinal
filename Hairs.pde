@@ -1,34 +1,36 @@
-class hair{
+class hair {
   PVector position;
   PVector velocity;
   float lifespan;
-  
+  float angle;
+
   hair(PVector pos) {
-    velocity = new PVector(random(-5, 5), random(-2, 0));
+    velocity = new PVector(random(-1.5, 1.5), random(0, 5));
     position = pos.copy();
     lifespan = 255.0;
+    angle = random(-0.5, 0.5); //random angle
   }
-void run() {
-   update();
-   display();
+  void run() {
+    update();
+    display();
   }
- void update() {
+  void update() {
     position.add(velocity);
     lifespan -= 2.0;
   }
   void display() {
-    stroke(0, lifespan);
-    strokeWeight(2);
-    fill(127, lifespan);
+    pushMatrix();
+    translate(position.x, position.y);
+    rotate(angle);
     noStroke();
-    fill(#FFD700);
-    ellipse(position.x, position.y, 12, 12);
+    fill(#716659);
+    rect(0, 0, 1, 8); //to draw the rect relative to the translated origin
+    popMatrix();
   }
   boolean isDead() {
     if (lifespan < 0.0) {
       return true;
-    } 
-    else {
+    } else {
       return false;
     }
   }

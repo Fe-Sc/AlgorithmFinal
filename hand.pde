@@ -18,7 +18,7 @@ class Hand {
     imageMode(CENTER);
     //image(hand, 100, 600, 200, 200);
     if (dragged){
-    image(hand, mousePos.x - 70 , mousePos.y + 30, 200, 200);
+    image(hand, mousePos.x - 70 , mousePos.y + 30, 200, 200); //the image follows the mouse position with an offset
     }
     else{
     image(hand, 100, 600, 200, 200);

@@ -5,6 +5,7 @@ class hairSystem{
     hairs = new ArrayList<hair>();
   }
   void makeHair(PVector pos){
+    
     hairs.add(new hair(new PVector(pos.x,pos.y)));
   }
   void updateHair(){

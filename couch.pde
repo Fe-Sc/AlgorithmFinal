@@ -1,17 +1,15 @@
 class Couch {
-  hairSystem flyingHairs;
+
   PImage sieb;
   PImage cloth;
   PVector pos = new PVector(350,400);
   Couch() {
     sieb = loadImage("siebster.png");
     cloth = loadImage("kleedje.jpg");
-    flyingHairs = new hairSystem();
+   
     this.pos.set(pos);
   }
-  void update(){
-    flyingHairs.updateHair();
-  }
+
   void display() {
     noStroke();
     beginShape();
@@ -24,8 +22,5 @@ class Couch {
     imageMode(CENTER);
     image(sieb, 770, 600, 200, 200);
   }
-    void MouseDraggedEvent(PVector mouse){
-    pos.set(mouse);
-    flyingHairs.makeHair(new PVector(pos.x, pos.y -200));
-  }
+
 }
