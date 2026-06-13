@@ -1,13 +1,40 @@
-class Glass{
-  boolean isBroken = false;
-  void display(){
-    fill(#EDEDED, 80);
-    rect(400,320,350,300);
-    rect(550,320,250,300);
-    
-    
+class Glass {
+
+  int hitcount = 0;
+  boolean isinside = false; //variable to see if the ball was inside the glass area at the previous frames
+  
+  void display() {
+    if (hitcount < 2) {
+      fill(#EDEDED, 80);
+      rect(400, 320, 350, 300);
+      rect(550, 320, 250, 300);
+    }
+    if (hitcount == 1) {
+      stroke(#BCBCBC);
+      strokeWeight(2);
+      line(551, 370, 450, 280);
+      line(551, 370, 600, 260);
+      line(553, 370, 456, 350);
+      line(550, 370, 643, 380);
+      line(550, 370, 631, 450);
+      line(550, 370, 493, 460);
+      line(550, 370, 445, 420);
+      noStroke();
+    }
   }
-  
-  
-  
+
+  void render(PVector ballpos) {
+    boolean inside = isHit(ballpos); //check whether the ball is inside the glass area
+    
+    if (inside && !isinside){ //count a hit when ball is inside the glass area, and wasnt in the area the previous frame
+      hitcount++;
+    }
+    
+    isinside = inside; //save the current state for the next frame, to compare whether the ball is still inside or outside the glass area
+
+  }
+
+  boolean isHit(PVector ballpos) {
+    return (ballpos.x > 400 && ballpos.x < 800 && ballpos.y > 320 && ballpos.y < 620);
+  } //returns true if the ball is inside the glass area, and false if it isnt
 }

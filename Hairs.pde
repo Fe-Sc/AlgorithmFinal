@@ -8,7 +8,7 @@ class hair {
     velocity = new PVector(random(-1.5, 1.5), random(0, 5));
     position = pos.copy();
     lifespan = 255.0;
-    angle = random(-0.5, 0.5); //random angle
+    angle = random(-2, 2); //random angle
   }
   void run() {
     update();

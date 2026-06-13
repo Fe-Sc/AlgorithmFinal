@@ -32,6 +32,7 @@ void draw() {
   couch.display();
   plant.display();
   glass.display();
+  glass.render(ball.position);
   television.display();
   television.render();
   ball.update();
