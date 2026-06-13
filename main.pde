@@ -10,6 +10,7 @@ Lamp lamp;
 Ball ball;
 hairSystem hs;
 Glass glass;
+Flock flock;
 
 void setup() {
   size(1000, 700, P2D);
@@ -23,12 +24,18 @@ void setup() {
   lamp = new Lamp();
   glass = new Glass();
   hs = new hairSystem();
+  flock = new Flock();
+  for (int i = 0; i < 10; i++) {
+    Bird bird = new Bird(width/2, height/2);
+    flock.addBird(bird);
+  }
 }
 
 void draw() {
   background(#d8cab5);
   room.display();
   window.display();
+  flock.run();
   plant.display();
   television.display();
   television.render();
