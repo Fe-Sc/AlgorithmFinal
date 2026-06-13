@@ -5,7 +5,7 @@ class Hand {
   PVector position;
   PVector Dragline;
   boolean dragged = false; 
-  PVector basePos = new PVector(170, 570); //<>//
+  PVector basePos = new PVector(170, 570); //<>// //<>//
   
  
   Hand(PVector position, Ball ball ) {
@@ -43,6 +43,7 @@ class Hand {
       ball.setAcceleration(new PVector(0, 0.5)); // Adding gravity here
       
       dragged = false;  
+      ball.thrown = true;
    }
   }
     void mouseDraggedEvent(PVector mouse){

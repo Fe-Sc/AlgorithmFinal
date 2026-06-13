@@ -33,6 +33,7 @@ void draw() {
   plant.display();
   glass.display();
   glass.render(ball.position);
+  glass.collide(ball);
   television.display();
   television.render();
   ball.update();

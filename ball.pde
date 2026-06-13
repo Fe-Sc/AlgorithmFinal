@@ -5,6 +5,8 @@ class Ball {
   PVector acceleration = new PVector();
   PVector startpos = new PVector();
   float maxdist = 0;
+  float airtime = 0;
+  boolean thrown = false;
 
   Ball(PVector position, PVector velocity) {
     ball = loadImage("TennisBall.png");
@@ -24,19 +26,16 @@ class Ball {
     //add here the physics of velocity and position
     velocity.add(acceleration);
     position.add(velocity);
-
-    float d = PVector.dist(position, startpos);
-    if (d > maxdist) {
-      maxdist = d;
+    if (thrown) {
+      airtime += 10;
     }
-    println(maxdist);
   }
 
   void display() {
     imageMode(CENTER);
     //makes the ball smaller/bigger the closer/further it is
-    float currentSizeW = map(maxdist + (startpos.y - position.y), 0, 800, 120, 1);
-    float currentSizeH = map(maxdist + (startpos.y - position.y), 0, 800, 120, 1);
+    float currentSizeW = map(airtime, 0, 800, 120, 1);
+    float currentSizeH = map(airtime, 0, 800, 120, 1);
 
     // makes sure the ball does not get too big
     currentSizeW = constrain(currentSizeW, 20, 150);
@@ -57,6 +56,8 @@ class Ball {
     this.acceleration.set(0, 0);
     this.startpos.set(position);
     this.maxdist = 0;
+    airtime = 0;
+    thrown = false;
   }
 
   void setPosition(PVector position) {
@@ -73,5 +74,7 @@ class Ball {
 
   void resetsize() { //so when dragging mouse and not pressing r, the ball is not tiny
     this.maxdist = 0;
+    airtime = 0;
+    thrown = false;
   }
 }
