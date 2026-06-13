@@ -9,6 +9,7 @@ Hand hand;
 Lamp lamp;
 Ball ball;
 hairSystem hs;
+Glass glass;
 
 void setup() {
   size(1000, 700, P2D);
@@ -20,6 +21,7 @@ void setup() {
   ball = new Ball(new PVector(170, 570));
   hand = new Hand(new PVector(100, 550), ball);
   lamp = new Lamp();
+  glass = new Glass();
   hs = new hairSystem();
 }
 
@@ -29,6 +31,7 @@ void draw() {
   window.display();
   couch.display();
   plant.display();
+  glass.display();
   television.display();
   television.render();
   ball.update();
@@ -36,13 +39,13 @@ void draw() {
   hand.display();
   lamp.display();
 
-  println(mouseX, mouseY);
+  //println(mouseX, mouseY);
   hs.updateHair();
 }
 
 void mouseDragged() {
   hand.mouseDraggedEvent(new PVector(mouseX, mouseY));
-  if (mouseX > 711 && mouseX < 860  && mouseY > 520 && mouseY < 676) {
+  if (mouseX > 711 && mouseX < 860  && mouseY > 520 && mouseY < 676) { //only if mouse is on the dog
     hs.makeHair(new PVector(mouseX, mouseY));
   }
 }

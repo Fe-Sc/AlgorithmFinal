@@ -40,7 +40,7 @@ class Hand {
       
       // 3. Set the ball's velocity and give it gravity
       ball.setVelocity(launch);
-      ball.setAcceleration(new PVector(0, 0.2)); // Adding gravity here
+      ball.setAcceleration(new PVector(0, 0.5)); // Adding gravity here
       
       dragged = false;  
    }
@@ -49,6 +49,7 @@ class Hand {
   dragged = true;
     ball.setPosition(mouse);
     mousePos.set(mouse);
+    ball.resetsize();
   ball.setAcceleration(new PVector(0, 0));
   ball.setVelocity(new PVector(0, 0));
     if (mouseX > 400 || mouseY < 350){
