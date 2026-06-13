@@ -29,21 +29,25 @@ void draw() {
   background(#d8cab5);
   room.display();
   window.display();
-  couch.display();
   plant.display();
+  television.display();
+  television.render();
+  couch.display();
   glass.display();
   glass.render(ball.position);
   glass.collide(ball);
   television.display();
   television.render();
   ball.update();
-  ball.display();
+  ball.display(glass.isBroken());
   hand.display();
   lamp.display();
 
-  //println(mouseX, mouseY);
+  println(mouseX, mouseY);
   hs.updateHair();
 }
+
+
 
 void mouseDragged() {
   hand.mouseDraggedEvent(new PVector(mouseX, mouseY));

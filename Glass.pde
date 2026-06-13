@@ -50,4 +50,7 @@ class Glass {
       }
     }
   }
+  boolean isBroken(){
+    return hitcount >= 2;
+  }
 }

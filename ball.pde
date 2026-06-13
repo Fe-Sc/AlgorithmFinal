@@ -1,3 +1,4 @@
+
 class Ball {
   PImage ball;
   PVector position = new PVector();
@@ -26,23 +27,23 @@ class Ball {
     //add here the physics of velocity and position
     velocity.add(acceleration);
     position.add(velocity);
-    if (thrown) {
-      airtime += 10;
+    if (thrown) { //counts airtime since thrown
+      airtime += 15;
     }
   }
 
-  void display() {
+  void display(boolean isBroken) {
+    if (isBroken && position.x > 680 && position.y > 170 && position.y < 470) return; //stop rendering the ball if it is to the right of the window
+
     imageMode(CENTER);
-    //makes the ball smaller/bigger the closer/further it is
     float currentSizeW = map(airtime, 0, 800, 120, 1);
     float currentSizeH = map(airtime, 0, 800, 120, 1);
-
-    // makes sure the ball does not get too big
     currentSizeW = constrain(currentSizeW, 20, 150);
     currentSizeH = constrain(currentSizeH, 16, 125);
-
     image(ball, position.x, position.y, currentSizeW, currentSizeH);
   }
+
+
 
   boolean isOutOfScreen() {
     return (position.x < 0 ||
