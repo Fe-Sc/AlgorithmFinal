@@ -36,20 +36,21 @@ class Glass {
     return (ballpos.x > 230 && ballpos.x < 800 && ballpos.y > 350 && ballpos.y < 400);
   } //returns true if the ball is inside the glass area, and false if it isnt
 
-  void collide(Ball ball) {
+  void collide(Ball ball) { //checks if ball colides with glass
     if (hitcount <= 2) {
       if (ball.position.x > 230 &&
         ball.position.x < 800 &&
         ball.position.y > 320 &&
         ball.position.y < 400) {
 
+        //ball bounces back when it hits the glass
         ball.velocity.x *= -0.9;
         ball.velocity.y *= -0.9;
       }
     }
   }
 
-  boolean isBroken() {
+  boolean isBroken() { //glass breaks if it is hit twice
     return hitcount >= 2;
   }
 }

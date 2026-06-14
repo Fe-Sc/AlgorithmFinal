@@ -25,11 +25,10 @@ class Watermanagement {
       watersystems[i+1].calculateNeighbourForce(-distanceDiff); //if neighbor position is under that of the member it is compared to, it should bob up
     }
     for (system s : watersystems) {
-      //s.render();
       s.update();
     }
     //generating the shape
-    fill(#00008b);
+    fill(#5DAFDF);
     noStroke();
     beginShape();
 
@@ -45,13 +44,9 @@ class Watermanagement {
   }
 
   void click(int watermx, int watermy) { //give a wave force
-    if(watermx > 600 && watermx < 655 && watermy > 645 && watermy < 680){
-    int wave = int(random(0, 10));
-    watersystems[wave].force = 10;
+    if (watermx > 600 && watermx < 655 && watermy > 645 && watermy < 680) {
+      int wave = int(random(0, 10));
+      watersystems[wave].force = 10;
     }
   }
 }
-  // line(600, 680, 600, 645);
-    //line(655, 680, 655, 645);
-    //fill(#6F6F6F);
-    //rect(628.5, 672, 54, 15);

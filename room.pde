@@ -1,5 +1,5 @@
-  class Room { //class for the boundaries of the room including the plant and the window
-  //makes the images variables 
+class Room { //class for the boundaries of the room including the plant and the window
+  //makes the images variables
   PImage pot;
   PImage plant;
 
@@ -36,5 +36,19 @@
     line(655, 680, 655, 645);
     fill(#6F6F6F);
     rect(628.5, 672, 54, 15);
+    //the lamp
+    stroke(#000000);
+    strokeWeight(5);
+    line(500, 0, 500, 100);
+    fill(#FFDD62);
+    noStroke();
+    circle(500, 140, 20);
+    fill(#838383);
+    beginShape();
+    vertex(550, 140);
+    vertex(530, 100);
+    vertex(470, 100);
+    vertex(450, 140);
+    endShape();
   }
 }

@@ -9,7 +9,7 @@ class Ball {
   boolean outside = false;
   boolean hidden = false;
 
-  //constructor that gives starting position and starting velocity 
+  //constructor that gives starting position and starting velocity
   Ball(PVector position, PVector velocity) {
     //gives the ball an image
     ball = loadImage("TennisBall.png");

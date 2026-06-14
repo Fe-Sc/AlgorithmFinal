@@ -28,7 +28,7 @@ class Hand { //<>//
     dragged = false;
   }
 
-  void mouseReleasedEvent() { 
+  void mouseReleasedEvent() {
     if (dragged) {
       // 1. Calculate the direction from the mouse back to the anchor
       PVector launch = PVector.sub(basePos, mousePos);

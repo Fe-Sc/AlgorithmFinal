@@ -1,7 +1,7 @@
 class Television {
   float t = 0; // time offset for z-coordinate in noise space
   boolean isOn = false;
-  
+
   void display() {
     fill(#000000);
     noStroke();

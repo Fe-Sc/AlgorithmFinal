@@ -1,11 +1,11 @@
 //Fernando Schintz & Tim Goedejohan
 //s3686337, s3706877
 //photos used:
-  //the photo of the dog and the photo of the hand made by ourselves
-  //the pot: https://www.magnific.com/free-photo/empty-terracotta-clay-plant-pot_16238540.htm#fromView=search&page=1&position=1&uuid=c8495cb9-a492-444a-baa3-86db1b033db2&query=Empty+flower+pot
-  //the plant: https://www.magnific.com/free-psd/lush-green-dracaena-plant-elegant-white-pot-perfect-indoor-greenery_409089784.htm#fromView=search&page=1&position=1&uuid=4ba35584-8600-429e-90d6-6b01ab22940d&query=plant+?log-in=google
-  //the bird: https://www.magnific.com/free-photo/white-bird-flying-sea_14501401.htm#fromView=search&page=1&position=3&uuid=ca5ef1a5-bc7c-49df-8670-4c51dad2c779&query=bird+flying
-  //fabric texture: https://www.magnific.com/free-photo/fabric-texture-background_1161816.htm#fromView=search&page=1&position=8&uuid=7ab45240-6ad9-4920-8d6e-881538ca5269&query=Flat+rug+fabric+texture
+//the photo of the dog and the photo of the hand made by ourselves
+//the pot: https://www.magnific.com/free-photo/empty-terracotta-clay-plant-pot_16238540.htm#fromView=search&page=1&position=1&uuid=c8495cb9-a492-444a-baa3-86db1b033db2&query=Empty+flower+pot
+//the plant: https://www.magnific.com/free-psd/lush-green-dracaena-plant-elegant-white-pot-perfect-indoor-greenery_409089784.htm#fromView=search&page=1&position=1&uuid=4ba35584-8600-429e-90d6-6b01ab22940d&query=plant+?log-in=google
+//the bird: https://www.magnific.com/free-photo/white-bird-flying-sea_14501401.htm#fromView=search&page=1&position=3&uuid=ca5ef1a5-bc7c-49df-8670-4c51dad2c779&query=bird+flying
+//fabric texture: https://www.magnific.com/free-photo/fabric-texture-background_1161816.htm#fromView=search&page=1&position=8&uuid=7ab45240-6ad9-4920-8d6e-881538ca5269&query=Flat+rug+fabric+texture
 
 
 //making the variables
@@ -24,9 +24,9 @@ Watermanagement water;
 
 //seting up the screen and creating the objects
 void setup() {
-  size(1000, 700, P2D);//setting up the size and making the program use the graphics card
-  room = new Room();
+  size(1000, 700, P2D); //setting up the size and making the program use the graphics card
   //creating objects
+  room = new Room();
   couch = new Couch();
   television = new Television();
   ball = new Ball(new PVector(170, 570));  //sets up the ball in the start position
@@ -78,7 +78,7 @@ void mouseReleased() {
 }
 
 void mousePressed() {
-  television.click(mouseX, mouseY); //checks if TV is clicked 
+  television.click(mouseX, mouseY); //checks if TV is clicked
   water.click(mouseX, mouseY); //checks if the water is clicked
 }
 

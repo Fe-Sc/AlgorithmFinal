@@ -2,12 +2,11 @@ class Couch {
   //making the images variables
   PImage sieb;
   PImage cloth;
- // PVector pos = new PVector(350, 400);
+  
   Couch() {
     //loads images needed
     sieb = loadImage("siebster.png");
     cloth = loadImage("kleedje.jpg");
-  //  this.pos.set(pos);
   }
 
   void display() {

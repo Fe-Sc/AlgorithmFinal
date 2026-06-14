@@ -21,12 +21,12 @@ class system {
 
 
   void update() {
-    
+
     float restoringForce = -springConstant * displacement; //f = -k*x (x is displacement)
-    force += restoringForce; //total force  
+    force += restoringForce; //total force
     acceleration = force / mass; // a = f/m
     velocity += acceleration;
-    
+
     velocity *= damping; //applying damping
     displacement += velocity;
 

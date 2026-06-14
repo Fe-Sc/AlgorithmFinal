@@ -9,10 +9,10 @@ class Bird {
   float maxspeed;    // Maximum speed
   PImage bird;
 
-  Bird(float x, float y) {
-    acceleration = new PVector(0, 0);
-    velocity = new PVector(random(-2, 2), random(-2, 2));
-    position = new PVector(x, y);
+  Bird(float x, float y) { //gives the bird a position
+    acceleration = new PVector(0, 0); //starts without acceleration
+    velocity = new PVector(random(-2, 2), random(-2, 2)); //gives a random velocity
+    position = new PVector(x, y); 
     r = 3.0;
     maxspeed = 1.5;
     maxforce = 0.06;
@@ -32,42 +32,42 @@ class Bird {
 
 
   void flock(ArrayList<Bird> birds) {
-    PVector sep = separate(birds);   // Separation
-    PVector ali = align(birds);      // Alignment
-    PVector coh = cohesion(birds);   // Cohesion
+    PVector sep = separate(birds);   //separation (makes sure the birds dont touch each other, steer away from other birds)
+    PVector ali = align(birds);      //alignment (how much they copy other birds directoins)
+    PVector coh = cohesion(birds);   //cohesion (how close are they to one another)
 
 
-    // Arbitrarily weight these forces
+    //arbitrarily weight these forces
     sep.mult(1.0);
     ali.mult(0.3);
     coh.mult(0.4);
 
-    // Add the force
+    //add the force
     applyForce(sep);
     applyForce(ali);
     applyForce(coh);
   }
 
-  // Method to update position
+  //method to update position
   void update() {
-    // Update velocity
+    //update velocity
     velocity.add(acceleration);
-    // Limit speed
+    //limit speed
     velocity.limit(maxspeed);
     position.add(velocity);
-    // Reset accelertion to 0 each cycle
+    //reset accelertion to 0 each cycle
     acceleration.mult(0);
   }
 
-  // A method that calculates and applies a steering force towards a target
+  //method that calculates and applies a steering force towards a target
   PVector seek(PVector target) {
-    PVector desired = PVector.sub(target, position);  // A vector pointing from the position to the target
-    // Normalize desired and scale to maximum speed
+    PVector desired = PVector.sub(target, position);  //a vector pointing from the position to the target
+    //normalize desired and scale to maximum speed
     desired.normalize();
     desired.mult(maxspeed);
-    // Steering = Desired minus Velocity
+    //steering = desired minus Velocity
     PVector steer = PVector.sub(desired, velocity);
-    steer.limit(maxforce);  // Limit to maximum steering force
+    steer.limit(maxforce);  //limit to maximum steering force
     return steer;
   }
 
@@ -102,30 +102,30 @@ class Bird {
 
 
 
-  // Separation
-  // Method checks for nearby birds and let members steer away
+  //separation
+  //method checks for nearby birds and let members steer away
   PVector separate (ArrayList<Bird> birds) {
     float desiredseparation = 25.0f;
     PVector steer = new PVector(0, 0, 0);
     int count = 0;
-    // For every bird in the system check if it is close
+    //for every bird in the system check if it is close
     for (Bird other : birds) {
       float d = PVector.dist(position, other.position);
-      // If the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
+      //if the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
       if ((d > 0) && (d < desiredseparation)) {
-        // Calculate vector pointing away from neighbor
+        //calculate vector pointing away from neighbor
         PVector diff = PVector.sub(position, other.position);
         diff.normalize();
-        diff.div(d);        //calculate difference and devide by d
+        diff.div(d);  //calculate difference and devide by d
         steer.add(diff);
-        count++;            // Keep track of how many birds are there
+        count++;  //keep track of how many birds are there
       }
     }
     if (count > 0) {
       steer.div((float)count);
     }
 
-    // As long as the vector is greater than 0
+    //as long as the vector is greater than 0
     if (steer.mag() > 0) {
       //Steering = Desired - Velocity
       steer.normalize();
@@ -136,8 +136,8 @@ class Bird {
     return steer;
   }
 
-  // Alignment
-  // For every nearby bird in the system calculate the average velocity
+  //alignment
+  //for every nearby bird in the system calculate the average velocity
   PVector align (ArrayList<Bird> birds) {
     float neighbordist = 50;
     PVector sum = new PVector(0, 0);
@@ -161,22 +161,22 @@ class Bird {
     }
   }
 
-  // Cohesion
-  // For the center of all nearby birds, steer towards that
+  //cohesion
+  //for the center of all nearby birds, steer towards that
   PVector cohesion (ArrayList<Bird> birds) {
     float neighbordist = 50;
-    PVector sum = new PVector(0, 0);   // Start with empty vector
+    PVector sum = new PVector(0, 0);   //start with empty vector
     int count = 0;
     for (Bird other : birds) {
       float d = PVector.dist(position, other.position);
       if ((d > 0) && (d < neighbordist)) {
-        sum.add(other.position); // Add position
+        sum.add(other.position); //add position
         count++;
       }
     }
     if (count > 0) {
       sum.div(count);
-      return seek(sum);  // Steer towards the position
+      return seek(sum);  //steer towards the position
     } else {
       return new PVector(0, 0);
     }
