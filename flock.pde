@@ -1,4 +1,4 @@
-
+////Flocking code based on flocking code (boids flocking) by Daniel Shiffman, modified and used by Fernando Schintz and Tim Goedejohan
 class Flock {
   ArrayList<Bird> birds; // create an ArrayList for the birds
 

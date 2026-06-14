@@ -1,3 +1,4 @@
+//particle system partially based on code by Daniel Shiffman, modified and adjusted by Fernando Schintz and Tim Goedejohan
 class hairSystem {
   ArrayList<hair> hairs;
 
