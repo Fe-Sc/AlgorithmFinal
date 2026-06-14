@@ -1,8 +1,10 @@
-class Room { //class for the boundaries of the room including the plant and the window
+  class Room { //class for the boundaries of the room including the plant and the window
+  //makes the images variables 
   PImage pot;
   PImage plant;
 
   Room() {
+    //loads images needed
     pot = loadImage("pot.png");
     plant = loadImage("plant.png");
   }

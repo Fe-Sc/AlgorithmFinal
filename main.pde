@@ -24,41 +24,35 @@ Watermanagement water;
 
 //seting up the screen and creating the objects
 void setup() {
-  //setting up the size and making the program use the graphics card
-  size(1000, 700, P2D);
+  size(1000, 700, P2D);//setting up the size and making the program use the graphics card
   room = new Room();
   //creating objects
   couch = new Couch();
   television = new Television();
-  //sets up the ball in the start position
-  ball = new Ball(new PVector(170, 570));
-  //gives the hand a start postition and the ability to interact with the ball
-  hand = new Hand(new PVector(100, 550), ball);
+  ball = new Ball(new PVector(170, 570));  //sets up the ball in the start position
+  hand = new Hand(new PVector(100, 550), ball); //gives the hand a start postition and the ability to interact with the ball
   lamp = new Lamp();
   glass = new Glass();
   hs = new hairSystem();
   sky = new Sky();
   flock = new Flock();
-  //spawns the painting in a certain place
-  painting = new Painting(720, 200, 100, 200);
-  //makes a certain amount of birds in the center of the screen and adds to the flock manager
+  painting = new Painting(720, 200, 100, 200); //spawns the painting in a certain place
   water = new Watermanagement();
-  for (int i = 0; i < 6; i++) { // Generate six birds when running program
+  for (int i = 0; i < 50; i++) { // Generate six birds when running program
     Bird bird = new Bird(width/2, height/2);
     flock.addBird(bird);
   }
 }
+
 //draws the objects
 void draw() {
-  //creates a background beige color
-  background(#d8cab5);
+  background(#d8cab5); //creates a background beige color
   water.run();
   room.display();
   sky.display();
   flock.run();
   couch.display();
   glass.display();
-  
   glass.render(ball.position);
   glass.collide(ball);
   television.display();
@@ -72,25 +66,23 @@ void draw() {
   painting.display();
 }
 
-
-
 void mouseDragged() {
-  hand.mouseDraggedEvent(new PVector(mouseX, mouseY));
-  if (mouseX > 711 && mouseX < 860  && mouseY > 520 && mouseY < 676) { // Only if mouse is on the dog
+  hand.mouseDraggedEvent(new PVector(mouseX, mouseY)); //makes the position of the mouse a vector
+  if (mouseX > 711 && mouseX < 860  && mouseY > 520 && mouseY < 676) { //makes hairs only if mouse is on the dog
     hs.makeHair(new PVector(mouseX, mouseY));
   }
 }
 
 void mouseReleased() {
-  hand.mouseReleasedEvent(); // Shoots the ball when the mouse is released
+  hand.mouseReleasedEvent(); //shoots the ball when the mouse is released
 }
 
 void mousePressed() {
-  television.click(mouseX, mouseY); // Checks if TV is clicked 
-  water.click(mouseX, mouseY);
+  television.click(mouseX, mouseY); //checks if TV is clicked 
+  water.click(mouseX, mouseY); //checks if the water is clicked
 }
 
-// Resets the ball using r or R
+//resets the ball using r or R
 void keyPressed() {
   if (key == 'r' || key == 'R') {
     hand.reset();

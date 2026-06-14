@@ -1,16 +1,17 @@
 class Couch {
-
+  //making the images variables
   PImage sieb;
   PImage cloth;
-  PVector pos = new PVector(350, 400);
+ // PVector pos = new PVector(350, 400);
   Couch() {
+    //loads images needed
     sieb = loadImage("siebster.png");
     cloth = loadImage("kleedje.jpg");
-
-    this.pos.set(pos);
+  //  this.pos.set(pos);
   }
 
   void display() {
+    //displays the blanket
     noStroke();
     beginShape();
     texture(cloth);
@@ -19,6 +20,7 @@ class Couch {
     vertex(655, 577, 0, 0);
     vertex(760, 700, cloth.width, cloth.height);
     endShape(CLOSE);
+    //displays the dog
     imageMode(CENTER);
     image(sieb, 770, 600, 200, 200);
   }

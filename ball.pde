@@ -1,4 +1,3 @@
-
 class Ball {
   PImage ball;
   PVector position = new PVector();
@@ -10,22 +9,27 @@ class Ball {
   boolean outside = false;
   boolean hidden = false;
 
+  //constructor that gives starting position and starting velocity 
   Ball(PVector position, PVector velocity) {
+    //gives the ball an image
     ball = loadImage("TennisBall.png");
     this.position.set(position);
     this.velocity.set(velocity);
+    //starts with no acceleration
     this.acceleration.set(0, 0);
   }
 
+  //second constructor that only gives a starting position
   Ball(PVector position) {
     ball = loadImage("TennisBall.png");
     this.position.set(position);
+    //start with no velocity and no acceleration
     this.velocity.set(0, 0);
     this.acceleration.set(0, 0);
   }
 
   void update(boolean isBroken) {
-    //add here the physics of velocity and position
+    //the physics of velocity and position are added
     velocity.add(acceleration);
     position.add(velocity);
     if (thrown) { //counts airtime since thrown
@@ -37,6 +41,7 @@ class Ball {
     }
     //hide the ball if it is outside, and outside the boundaries of the window
     if (isBroken && position.x > 680 && position.y > 170 && position.y < 470) hidden = true;
+    if (isBroken && position.x > 170 && position.x < 680 && position.y < 170 ) hidden = true;
     if (isBroken && outside && position.y >= 450 && position.x >= 230 && position.x <= 670) hidden = true;
   }
 
@@ -44,15 +49,15 @@ class Ball {
   void display(boolean isBroken) {
     if (hidden) return; //if hidden is true, stop rendering the ball by exiting the method early
     if (isBroken && position.x > 680 && position.y > 170 && position.y < 470) return; //stop rendering the ball if it is to the right of the window
-
+    if (isBroken && position.x > 170 && position.x < 680 && position.y < 170 ) return; //stop rendering the ball if it is above the window
     if (isBroken && outside && position.y >= 460 && position.x >= 230 && position.x <= 670) return; // stop rendering the ball if it is outisde and out of the borders of the window so it looks like the ball falls behind the walls
 
     imageMode(CENTER);
-    float currentSizeW = map(airtime, 0, 800, 120, 1);   //maps the airtime variable with the currentsize variable
+    float currentSizeW = map(airtime, 0, 800, 120, 1); //maps the airtime variable with the currentsize variable
     float currentSizeH = map(airtime, 0, 800, 120, 1);
     currentSizeW = constrain(currentSizeW, 70, 150); //constrain the value of current size so the ball doesnt get smaller than those values
     currentSizeH = constrain(currentSizeH, 50, 125);
-    image(ball, position.x, position.y, currentSizeW, currentSizeH);
+    image(ball, position.x, position.y, currentSizeW, currentSizeH); //makes the ball using the size and position that are caculated
   }
 
 
@@ -63,7 +68,7 @@ class Ball {
       position.y < 0 ||
       position.y > height);
   }
-  void reset(PVector position) {
+  void reset(PVector position) { //resets the ball to the starting position
     this.position.set(position);
     this.velocity.set(0, 0);
     this.acceleration.set(0, 0);
@@ -92,7 +97,7 @@ class Ball {
     thrown = false;
     hidden = false;
   }
-
+  //makes the ball collide with the dog
   void collidedog() {
     if (position.x >= 700 &&
       position.y >= 480) {
