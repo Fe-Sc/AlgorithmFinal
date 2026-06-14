@@ -4,7 +4,7 @@
   //the photo of the dog and the photo of the hand made by ourselves
   //the pot: https://www.magnific.com/free-photo/empty-terracotta-clay-plant-pot_16238540.htm#fromView=search&page=1&position=1&uuid=c8495cb9-a492-444a-baa3-86db1b033db2&query=Empty+flower+pot
   //the plant: https://www.magnific.com/free-psd/lush-green-dracaena-plant-elegant-white-pot-perfect-indoor-greenery_409089784.htm#fromView=search&page=1&position=1&uuid=4ba35584-8600-429e-90d6-6b01ab22940d&query=plant+?log-in=google
-  //the bird:
+  //the bird: https://www.magnific.com/free-photo/white-bird-flying-sea_14501401.htm#fromView=search&page=1&position=3&uuid=ca5ef1a5-bc7c-49df-8670-4c51dad2c779&query=bird+flying
   //fabric texture: https://www.magnific.com/free-photo/fabric-texture-background_1161816.htm#fromView=search&page=1&position=8&uuid=7ab45240-6ad9-4920-8d6e-881538ca5269&query=Flat+rug+fabric+texture
 
 
@@ -38,7 +38,7 @@ void setup() {
   flock = new Flock();
   painting = new Painting(720, 200, 100, 200); //spawns the painting in a certain place
   water = new Watermanagement();
-  for (int i = 0; i < 50; i++) { // Generate six birds when running program
+  for (int i = 0; i < 30; i++) { // Generate six birds when running program
     Bird bird = new Bird(width/2, height/2);
     flock.addBird(bird);
   }

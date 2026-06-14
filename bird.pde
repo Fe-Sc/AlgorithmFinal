@@ -16,7 +16,7 @@ class Bird {
     r = 3.0;
     maxspeed = 1.5;
     maxforce = 0.06;
-    bird = loadImage("bird.png");
+    bird = loadImage("flyingbird.png");
   }
 
   void run(ArrayList<Bird> birds) {
@@ -38,9 +38,9 @@ class Bird {
 
 
     // Arbitrarily weight these forces
-    sep.mult(0.4);
+    sep.mult(1.0);
     ali.mult(0.3);
-    coh.mult(0.1);
+    coh.mult(0.4);
 
     // Add the force
     applyForce(sep);
@@ -72,7 +72,7 @@ class Bird {
   }
 
   void render() {
-    image(bird, position.x, position.y, 10, 10);
+    image(bird, position.x, position.y, 70, 65);
   }
 
   //keep the birds inside the borders of the windows
