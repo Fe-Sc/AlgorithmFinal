@@ -48,6 +48,7 @@ void draw() {
   television.render();
   ball.update(glass.isBroken());
   ball.display(glass.isBroken());
+  ball.collidedog();
   hand.display();
   lamp.display();
    hs.updateHair();

@@ -31,27 +31,27 @@ class Ball {
     if (thrown) { //counts airtime since thrown
       airtime += 15;
     }
-    
-    if (position.y < 450 && position.x >= 230 && position.x <= 670){ //if the ball is inside the bounds of the window, it is outside
+
+    if (position.y < 450 && position.x >= 230 && position.x <= 670) { //if the ball is inside the bounds of the window, it is outside
       outside = true;
     }
     //hide the ball if it is outside, and outside the boundaries of the window
     if (isBroken && position.x > 680 && position.y > 170 && position.y < 470) hidden = true;
     if (isBroken && outside && position.y >= 450 && position.x >= 230 && position.x <= 670) hidden = true;
   }
-  
+
 
   void display(boolean isBroken) {
     if (hidden) return; //if hidden is true, stop rendering the ball by exiting the method early
     if (isBroken && position.x > 680 && position.y > 170 && position.y < 470) return; //stop rendering the ball if it is to the right of the window
-    
+
     if (isBroken && outside && position.y >= 460 && position.x >= 230 && position.x <= 670) return; // stop rendering the ball if it is outisde and out of the borders of the window so it looks like the ball falls behind the walls
-    
+
     imageMode(CENTER);
     float currentSizeW = map(airtime, 0, 800, 120, 1);   //maps the airtime variable with the currentsize variable
     float currentSizeH = map(airtime, 0, 800, 120, 1);
-    currentSizeW = constrain(currentSizeW, 50, 150); //constrain the value of current size so the ball doesnt get smaller than those values
-    currentSizeH = constrain(currentSizeH, 40, 125);
+    currentSizeW = constrain(currentSizeW, 70, 150); //constrain the value of current size so the ball doesnt get smaller than those values
+    currentSizeH = constrain(currentSizeH, 50, 125);
     image(ball, position.x, position.y, currentSizeW, currentSizeH);
   }
 
@@ -91,5 +91,14 @@ class Ball {
     airtime = 0;
     thrown = false;
     hidden = false;
+  }
+
+  void collidedog() {
+    if (position.x >= 700 &&
+      position.y >= 480) {
+
+      velocity.x *= -1;
+      velocity.y *= -1;
+    }
   }
 }
