@@ -51,7 +51,8 @@ void draw() {
   hand.display();
   lamp.display();
 
-  println(mouseX, mouseY);
+  println(ball.position.y);
+  println(ball.outside);
   hs.updateHair();
 }
 
