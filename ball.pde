@@ -3,7 +3,7 @@ class Ball {
   PVector position = new PVector();
   PVector velocity = new PVector();
   PVector acceleration = new PVector();
-  PVector startpos = new PVector();
+  PVector startPos = new PVector();
   float airtime = 0;
   boolean thrown = false;
   boolean outside = false;
@@ -72,7 +72,7 @@ class Ball {
     this.position.set(position);
     this.velocity.set(0, 0);
     this.acceleration.set(0, 0);
-    this.startpos.set(position);
+    this.startPos.set(position);
     outside = false;
     airtime = 0;
     thrown = false;
