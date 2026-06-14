@@ -14,8 +14,8 @@ class Bird {
     velocity = new PVector(random(-2, 2), random(-2, 2));
     position = new PVector(x, y);
     r = 3.0;
-    maxspeed = 1.8;
-    maxforce = 0.03;
+    maxspeed = 1.5;
+    maxforce = 0.06;
     bird = loadImage("bird.png");
   }
 
@@ -38,9 +38,9 @@ class Bird {
 
 
     // Arbitrarily weight these forces
-    sep.mult(1.5);
-    ali.mult(0.7);
-    coh.mult(1.0);
+    sep.mult(1.6);
+    ali.mult(0.3);
+    coh.mult(0.2);
 
     // Add the force
     applyForce(sep);
@@ -73,7 +73,7 @@ class Bird {
 
   void render() {
 
-    image(bird, position.x, position.y, 30, 30);
+    image(bird, position.x, position.y, 50, 50);
   }
 
   //keep the birds inside the borders of the windows

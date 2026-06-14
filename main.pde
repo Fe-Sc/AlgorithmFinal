@@ -11,6 +11,7 @@ Ball ball;
 hairSystem hs;
 Glass glass;
 Flock flock;
+Sky sky;
 
 void setup() {
   size(1000, 700, P2D);
@@ -24,8 +25,9 @@ void setup() {
   lamp = new Lamp();
   glass = new Glass();
   hs = new hairSystem();
+  sky = new Sky();
   flock = new Flock();
-  for (int i = 0; i < 10; i++) {
+  for (int i = 0; i < 6; i++) { //generate six birds when running program
     Bird bird = new Bird(width/2, height/2);
     flock.addBird(bird);
   }
@@ -35,14 +37,13 @@ void draw() {
   background(#d8cab5);
   room.display();
   window.display();
+  sky.display();
   flock.run();
-  plant.display();
-  television.display();
-  television.render();
   couch.display();
   glass.display();
   glass.render(ball.position);
   glass.collide(ball);
+  plant.display();
   television.display();
   television.render();
   ball.update();

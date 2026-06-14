@@ -5,9 +5,9 @@ class Glass {
 
   void display() {
     if (hitcount < 2) {
-      fill(#EDEDED, 80);
-      rect(400, 320, 350, 300);
-      rect(550, 320, 250, 300);
+      fill(#EDEDED, 180);
+      rect(451, 320, 450, 300);
+
       fill(#000000);
     }
     if (hitcount == 1) {
