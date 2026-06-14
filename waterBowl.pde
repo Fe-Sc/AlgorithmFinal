@@ -1,4 +1,4 @@
-class system {
+class WaterSystem {
   float mass;
   float force;
   float damping;
@@ -9,7 +9,7 @@ class system {
   PVector position;
 
 
-  system(float mass, float springConstant, float damping, PVector position) {
+  WaterSystem(float mass, float springConstant, float damping, PVector position) {
     this.mass = mass;
     this.springConstant = springConstant;
     this.damping = damping;

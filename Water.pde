@@ -3,14 +3,14 @@ class Watermanagement {
   float springConstant = 0.1;
   float damping = 0.98;
 
-  system[] watersystems;
+  WaterSystem[] watersystems;
 
   //fill array with objects
   Watermanagement() {
-    watersystems = new system[10];
+    watersystems = new WaterSystem[10];
     for (int i = 0; i < watersystems.length; i++) {
       float offset = 600 + (i * 6);
-      watersystems[i] = new system(mass, springConstant, damping, new PVector(offset, 650));
+      watersystems[i] = new WaterSystem(mass, springConstant, damping, new PVector(offset, 650));
     }
   }
 
@@ -24,7 +24,7 @@ class Watermanagement {
 
       watersystems[i+1].calculateNeighbourForce(-distanceDiff); //if neighbor position is under that of the member it is compared to, it should bob up
     }
-    for (system s : watersystems) {
+    for (WaterSystem s : watersystems) {
       s.update();
     }
     //generating the shape
