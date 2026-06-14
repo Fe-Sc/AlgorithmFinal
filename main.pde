@@ -50,10 +50,12 @@ void draw() {
   ball.display(glass.isBroken());
   hand.display();
   lamp.display();
+   hs.updateHair();
+   //--DEBUGGING--\\
+   println(mouseX, mouseY);
+  //println(ball.position.y);
+  //println(ball.outside); 
 
-  println(ball.position.y);
-  println(ball.outside);
-  hs.updateHair();
 }
 
 

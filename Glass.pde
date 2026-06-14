@@ -7,8 +7,6 @@ class Glass {
     if (hitcount < 2) {
       fill(#EDEDED, 180);
       rect(451, 320, 450, 300);
-
-      fill(#000000);
     }
     if (hitcount == 1) {
       stroke(#BCBCBC);
@@ -35,7 +33,7 @@ class Glass {
   }
 
   boolean isHit(PVector ballpos) {
-    return (ballpos.x > 400 && ballpos.x < 800 && ballpos.y > 320 && ballpos.y < 620);
+    return (ballpos.x > 230 && ballpos.x < 800 && ballpos.y > 350 && ballpos.y < 620);
   } //returns true if the ball is inside the glass area, and false if it isnt
 
   void collide(Ball ball) {

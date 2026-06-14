@@ -8,6 +8,7 @@ class Ball {
   float airtime = 0;
   boolean thrown = false;
   boolean outside = false;
+  boolean hidden =- false;
 
   Ball(PVector position, PVector velocity) {
     ball = loadImage("TennisBall.png");
@@ -23,7 +24,7 @@ class Ball {
     this.acceleration.set(0, 0);
   }
 
-  void update() {
+  void update(boolean isBroken) {
     //add here the physics of velocity and position
     velocity.add(acceleration);
     position.add(velocity);
@@ -31,12 +32,16 @@ class Ball {
       airtime += 12;
     }
     
-    if (position.y < 460){
+    if (position.y < 460 && position.x >= 230 && position.x <= 670){ //if the ball id indifr yhr hlsdd iy id ouydifr
       outside = true;
     }
+    if (isBroken && position.x > 680 && position.y > 170 && position.y < 470) hidden = true;
+    if (isBroken && outside && position.y >= 460 && position.x >= 230 && position.x <= 670) hidden = true;
+  }
   }
 
   void display(boolean isBroken) {
+    if (hidden) return;
     if (isBroken && position.x > 680 && position.y > 170 && position.y < 470) return; //stop rendering the ball if it is to the right of the window
     
     if (isBroken && outside && position.y >= 460 && position.x >= 230 && position.x <= 670) return; // stop rendering the ball if it is outisde and out of the borders of the window so it looks like the ball falls behind the walls
@@ -65,6 +70,7 @@ class Ball {
     outside = false;
     airtime = 0;
     thrown = false;
+    hidden = false;
   }
 
   void setPosition(PVector position) {
@@ -83,5 +89,6 @@ class Ball {
     outside = false;
     airtime = 0;
     thrown = false;
+    hidden = false;
   }
 }
