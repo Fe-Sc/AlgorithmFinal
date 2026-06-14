@@ -8,16 +8,16 @@ class Glass {
       fill(#EDEDED, 180);
       rect(451, 320, 450, 300);
     }
-    if (hitcount == 1) {
-      stroke(#BCBCBC);
-      strokeWeight(2);
-      line(551, 370, 450, 280);
-      line(551, 370, 600, 260);
-      line(553, 370, 456, 350);
-      line(550, 370, 643, 380);
-      line(550, 370, 631, 450);
-      line(550, 370, 493, 460);
-      line(550, 370, 445, 420);
+    if (hitcount == 1) {  //make crack appear when hit
+      stroke(#858585);
+      strokeWeight(1);
+      line(456, 373, 319, 244);
+      line(449, 370, 594, 260);
+      line(454, 370, 601, 350);
+      line(452, 370, 611, 380);
+      line(453, 370, 482, 225);
+      line(453, 370, 313, 460);
+      line(454, 370, 477, 440);
       noStroke();
     }
   }
@@ -33,15 +33,15 @@ class Glass {
   }
 
   boolean isHit(PVector ballpos) {
-    return (ballpos.x > 230 && ballpos.x < 800 && ballpos.y > 350 && ballpos.y < 620);
+    return (ballpos.x > 230 && ballpos.x < 800 && ballpos.y > 350 && ballpos.y < 400);
   } //returns true if the ball is inside the glass area, and false if it isnt
 
   void collide(Ball ball) {
-    if (hitcount < 2) {
-      if (ball.position.x > 400 &&
+    if (hitcount <= 2) {
+      if (ball.position.x > 230 &&
         ball.position.x < 800 &&
         ball.position.y > 320 &&
-        ball.position.y < 620) {
+        ball.position.y < 400) {
 
         ball.velocity.x *= -0.9;
         ball.velocity.y *= -0.9;

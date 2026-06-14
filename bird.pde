@@ -138,7 +138,7 @@ class Bird {
   }
 
   // Alignment
-  // For every nearby bird in the system, calculate the average velocity
+  // For every nearby bird in the system calculate the average velocity
   PVector align (ArrayList<Bird> birds) {
     float neighbordist = 50;
     PVector sum = new PVector(0, 0);
@@ -163,7 +163,7 @@ class Bird {
   }
 
   // Cohesion
-  // For the average position (center) of all nearby birds, calculate steering vector towards that position
+  // For the center of all nearby birds, steer towards that
   PVector cohesion (ArrayList<Bird> birds) {
     float neighbordist = 50;
     PVector sum = new PVector(0, 0);   // Start with empty vector

@@ -46,7 +46,7 @@ void draw() {
   plant.display();
   television.display();
   television.render();
-  ball.update();
+  ball.update(glass.isBroken());
   ball.display(glass.isBroken());
   hand.display();
   lamp.display();

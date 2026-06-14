@@ -5,7 +5,7 @@ class Hand {
   PVector position;
   PVector Dragline;
   boolean dragged = false;
-  PVector basePos = new PVector(170, 570); //<>// //<>// //<>//
+  PVector basePos = new PVector(170, 570);  //<>//
 
 
   Hand(PVector position, Ball ball ) {

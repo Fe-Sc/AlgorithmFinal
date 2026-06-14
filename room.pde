@@ -1,5 +1,4 @@
-class Room {
-
+class Room { //class for the boundaries of the room
   void display() {
     stroke(#000000);
     strokeWeight(5);

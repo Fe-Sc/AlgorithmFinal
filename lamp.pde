@@ -1,5 +1,4 @@
 class Lamp {
-
   void display() {
     stroke(#000000);
     strokeWeight(5);

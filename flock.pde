@@ -1,5 +1,4 @@
 
-
 class Flock {
   ArrayList<Bird> birds; // create an ArrayList for the birds
 
@@ -9,7 +8,7 @@ class Flock {
 
   void run() {
     for (Bird b : birds) {
-      b.run(birds);  // Passing the entire list of birds to each bird individually
+      b.run(birds);  // pass the arraylist to the birds 
     }
   }
 
