@@ -8,7 +8,7 @@ class Flock {
 
   void run() {
     for (Bird b : birds) {
-      b.run(birds);  // pass the arraylist to the birds 
+      b.run(birds);  // pass the arraylist to the birds
     }
   }
 

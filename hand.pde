@@ -1,11 +1,11 @@
-class Hand {
+class Hand { //<>//
   PImage hand;
   Ball ball;
   PVector mousePos = new PVector();
   PVector position;
   PVector Dragline;
   boolean dragged = false;
-  PVector basePos = new PVector(170, 570);  //<>//
+  PVector basePos = new PVector(170, 570);
 
 
   Hand(PVector position, Ball ball ) {

@@ -38,9 +38,9 @@ class Bird {
 
 
     // Arbitrarily weight these forces
-    sep.mult(1.6);
+    sep.mult(0.4);
     ali.mult(0.3);
-    coh.mult(0.2);
+    coh.mult(0.1);
 
     // Add the force
     applyForce(sep);
@@ -72,8 +72,7 @@ class Bird {
   }
 
   void render() {
-
-    image(bird, position.x, position.y, 50, 50);
+    image(bird, position.x, position.y, 10, 10);
   }
 
   //keep the birds inside the borders of the windows
