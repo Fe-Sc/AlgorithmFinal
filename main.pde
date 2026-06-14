@@ -13,7 +13,6 @@ Room room;
 Couch couch;
 Television television;
 Hand hand;
-Lamp lamp;
 Ball ball;
 hairSystem hs;
 Glass glass;
@@ -31,7 +30,6 @@ void setup() {
   television = new Television();
   ball = new Ball(new PVector(170, 570));  //sets up the ball in the start position
   hand = new Hand(new PVector(100, 550), ball); //gives the hand a start postition and the ability to interact with the ball
-  lamp = new Lamp();
   glass = new Glass();
   hs = new hairSystem();
   sky = new Sky();
@@ -61,7 +59,6 @@ void draw() {
   ball.display(glass.isBroken());
   ball.collidedog();
   hand.display();
-  lamp.display();
   hs.updateHair();
   painting.display();
 }

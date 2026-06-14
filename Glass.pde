@@ -1,7 +1,7 @@
 class Glass {
   Ball ball;
   int hitcount = 0;
-  boolean isinside = false; //variable to see if the ball was inside the glass area at the previous frames
+  boolean isinside = false; //variable to see if the ball was inside the glass area at the previous frames, so hit is only registered as the ball touches the glass
 
   void display() {
     if (hitcount < 2) {

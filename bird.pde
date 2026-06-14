@@ -12,7 +12,7 @@ class Bird {
   Bird(float x, float y) { //gives the bird a position
     acceleration = new PVector(0, 0); //starts without acceleration
     velocity = new PVector(random(-2, 2), random(-2, 2)); //gives a random velocity
-    position = new PVector(x, y); 
+    position = new PVector(x, y);
     r = 3.0;
     maxspeed = 1.5;
     maxforce = 0.06;

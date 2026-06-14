@@ -2,7 +2,7 @@ class Couch {
   //making the images variables
   PImage sieb;
   PImage cloth;
-  
+
   Couch() {
     //loads images needed
     sieb = loadImage("siebster.png");
