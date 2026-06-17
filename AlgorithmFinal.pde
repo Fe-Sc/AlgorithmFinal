@@ -17,7 +17,6 @@ Ball ball;
 hairSystem hs;
 Glass glass;
 Flock flock;
-Sky sky;
 Painting painting;
 Watermanagement water;
 
@@ -32,7 +31,6 @@ void setup() {
   hand = new Hand(new PVector(100, 550), ball); //gives the hand a start postition and the ability to interact with the ball
   glass = new Glass();
   hs = new hairSystem();
-  sky = new Sky();
   flock = new Flock();
   painting = new Painting(720, 200, 100, 200); //spawns the painting in a certain place
   water = new Watermanagement();
@@ -47,7 +45,6 @@ void draw() {
   background(#d8cab5); //creates a background beige color
   water.run();
   room.display();
-  sky.display();
   flock.run();
   couch.display();
   glass.display();

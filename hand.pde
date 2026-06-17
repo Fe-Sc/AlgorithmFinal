@@ -55,7 +55,7 @@ class Hand { //<>//
     ball.setAcceleration(new PVector(0, 0));
     ball.setVelocity(new PVector(0, 0));
     //makes sure that the hand can only be dragged in the bottom right corner
-    if (mouseX > 400 || mouseY < 350) {
+    if (mouse.x > 400 || mouse.y < 350) {
       dragged = false;
       ball.reset(basePos);
     }

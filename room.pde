@@ -20,11 +20,16 @@ class Room { //class for the boundaries of the room including the plant and the 
     line(0, 0, 150, 125);
     line(1000, 700, 850, 575);
     line(1000, 0, 850, 125);
+    //sky
+    noStroke();
+    fill(#E1F1F7);
+    rect(451, 320, 450, 300);
+    stroke(1);
     //the windown
     strokeWeight(10);
-    fill(#E1F1F7, 0);
-    rect(400, 320, 350, 300);
-    rect(550, 320, 250, 300);
+    noFill();
+    rect(451, 320, 450, 300);
+    
     //plant pot
     image(pot, 150, 550, 150, 150);
     //plant green part

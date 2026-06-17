@@ -13,7 +13,7 @@ class Bird {
     acceleration = new PVector(0, 0); //starts without acceleration
     velocity = new PVector(random(-2, 2), random(-2, 2)); //gives a random velocity
     position = new PVector(x, y);
-    r = 3.0;
+    r = 15.0;
     maxSpeed = 1.5;
     maxForce = 0.06;
     bird = loadImage("flyingbird.png");
