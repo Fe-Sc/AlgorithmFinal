@@ -4,6 +4,12 @@ class Glass {
   boolean isInside = false; //variable to see if the ball was inside the glass area at the previous frames, so hit is only registered as the ball touches the glass
 
   void display() {
+
+    strokeWeight(10);
+    fill(#E1F1F7, 0);
+    rect(400, 320, 350, 300);
+    rect(550, 320, 250, 300);
+
     if (hitCount < 2) {
       fill(#EDEDED, 180);
       rect(451, 320, 450, 300);

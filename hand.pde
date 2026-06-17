@@ -14,7 +14,9 @@ class Hand { //<>//
     this.position = position;
   }
 
-  void display() { //draws the hand
+  void display() {
+    //draws the hand
+
     imageMode(CENTER);
     if (dragged) {
       image(hand, mousePos.x - 70, mousePos.y + 30, 200, 200); //the image follows the mouse position with an offset

@@ -46,11 +46,9 @@ class Ball {
   }
 
 
-  void display(boolean isBroken) {
+  void display() {
     if (hidden) return; //if hidden is true, stop rendering the ball by exiting the method early
-    if (isBroken && position.x > 680 && position.y > 170 && position.y < 470) return; //stop rendering the ball if it is to the right of the window
-    if (isBroken && position.x > 170 && position.x < 680 && position.y < 170 ) return; //stop rendering the ball if it is above the window
-    if (isBroken && outside && position.y >= 460 && position.x >= 230 && position.x <= 670) return; // stop rendering the ball if it is outisde and out of the borders of the window so it looks like the ball falls behind the walls
+   
 
     imageMode(CENTER);
     float currentSizeW = map(airtime, 0, 800, 120, 1); //maps the airtime variable with the currentsize variable
