@@ -10,7 +10,7 @@
 
 //making the variables
 Room room;
-Couch couch;
+Dog dog;
 Television television;
 Hand hand;
 Ball ball;
@@ -25,7 +25,7 @@ void setup() {
   size(1000, 700, P2D); //setting up the size and making the program use the graphics card
   //creating objects
   room = new Room();
-  couch = new Couch();
+  dog = new Dog(new PVector(770, 600),200, 200);
   television = new Television();
   ball = new Ball(new PVector(170, 570));  //sets up the ball in the start position
   hand = new Hand(new PVector(100, 550), ball); //gives the hand a start postition and the ability to interact with the ball
@@ -46,7 +46,7 @@ void draw() {
   water.run();
   room.display();
   flock.run();
-  couch.display();
+  dog.display();
   glass.display();
   glass.render(ball.position);
   glass.collide(ball);
@@ -54,7 +54,7 @@ void draw() {
   television.render();
   ball.update(glass.isBroken());
   ball.display();
-  ball.collidedog();
+  ball.collidedog(dog);
   hand.display();
   hs.updateHair();
   painting.display();

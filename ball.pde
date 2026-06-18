@@ -8,6 +8,7 @@ class Ball {
   boolean thrown = false;
   boolean outside = false;
   boolean hidden = false;
+  Dog dog;
 
   //constructor that gives starting position and starting velocity
   Ball(PVector position, PVector velocity) {
@@ -48,7 +49,7 @@ class Ball {
 
   void display() {
     if (hidden) return; //if hidden is true, stop rendering the ball by exiting the method early
-   
+
 
     imageMode(CENTER);
     float currentSizeW = map(airtime, 0, 800, 120, 1); //maps the airtime variable with the currentsize variable
@@ -96,9 +97,11 @@ class Ball {
     hidden = false;
   }
   //makes the ball collide with the dog
-  void collidedog() {
-    if (position.x >= 700 &&
-      position.y >= 480) {
+  void collidedog(Dog dog) {
+    if (position.x >= dog.dogPos.x - dog.dogWidth/2 &&
+      position.x <= dog.dogPos.x + dog.dogWidth/2 &&
+      position.y >= dog.dogPos.y - dog.dogHeight/2 &&
+      position.y <= dog.dogPos.y + dog.dogHeight/2) {
 
       velocity.x *= -1;
       velocity.y *= -1;

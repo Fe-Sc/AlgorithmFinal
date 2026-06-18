@@ -1,12 +1,18 @@
-class Couch {
+class Dog {
   //making the images variables
   PImage sieb;
   PImage cloth;
-
-  Couch() {
+  float dogWidth;
+  float dogHeight;
+  PVector dogPos;
+  
+  Dog(PVector position, float dw, float dh) {
     //loads images needed
     sieb = loadImage("siebster.png");
     cloth = loadImage("kleedje.jpg");
+    dogWidth = dw;
+    dogHeight = dh;
+    dogPos = position;
   }
 
   void display() {
@@ -21,6 +27,6 @@ class Couch {
     endShape(CLOSE);
     //displays the dog
     imageMode(CENTER);
-    image(sieb, 770, 600, 200, 200);
+    image(sieb, dogPos.x, dogPos.y, dogWidth, dogHeight);
   }
 }
