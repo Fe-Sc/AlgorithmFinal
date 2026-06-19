@@ -4,14 +4,18 @@ class hair {
   PVector velocity;
   float lifespan;
   float angle;
+  Glass glass;
+  PVector windforce;
 
-  hair(PVector pos) {
+  hair(PVector pos, Glass g) {
     //makes the velocity a random vector
     velocity = new PVector(random(-1.5, 1.5), random(0, 5));
+    windforce = new PVector();
     position = pos.copy();
     //makes the lifespan 255
     lifespan = 255.0;
     angle = random(-2, 2); //random angle
+    glass = g;
   }
   void run() {
     update();
@@ -22,6 +26,11 @@ class hair {
     position.add(velocity);
     //decreases the lifespan every frame
     lifespan -= 2.0;
+    //wind
+    windforce = new PVector(random(-0.5, 0.5), 0);
+    if (glass.isBroken()){
+      velocity.add(windforce);
+    }
   }
   void display() { //creates the hairs
     pushMatrix();

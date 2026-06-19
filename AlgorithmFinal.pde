@@ -62,7 +62,7 @@ void draw() {
 
 void mouseDragged() {
   hand.mouseDraggedEvent(new PVector(mouseX, mouseY)); //makes the position of the mouse a vector
-  if (mouseX > 711 && mouseX < 860  && mouseY > 520 && mouseY < 676) { //makes hairs only if mouse is on the dog
+  if (dog.inside(mouseX, mouseY)) {
     hs.makeHair(new PVector(mouseX, mouseY));
   }
 }

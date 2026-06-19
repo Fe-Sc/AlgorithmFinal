@@ -5,6 +5,7 @@ class Dog {
   float dogWidth;
   float dogHeight;
   PVector dogPos;
+
   
   Dog(PVector position, float dw, float dh) {
     //loads images needed
@@ -28,5 +29,12 @@ class Dog {
     //displays the dog
     imageMode(CENTER);
     image(sieb, dogPos.x, dogPos.y, dogWidth, dogHeight);
+  }
+
+  //checkes wether the input x and y are inside the area of the dog and returns true or false, for the hair particle system 
+  boolean inside(float x, float y) {
+    float halfW = dogWidth / 2;
+    float halfH = dogHeight / 2;
+    return x > dogPos.x - halfW && x < dogPos.x + halfW && y > dogPos.y - halfH && y < dogPos.y + halfH;
   }
 }
