@@ -9,15 +9,19 @@ class Ball {
   boolean outside = false;
   boolean hidden = false;
   Dog dog;
+  float currentSizeW;
+  float currentSizeH;
+  Glass glass;
 
   //constructor that gives starting position and starting velocity
-  Ball(PVector position, PVector velocity) {
+  Ball(PVector position, PVector velocity, Glass glass) {
     //gives the ball an image
     ball = loadImage("TennisBall.png");
     this.position.set(position);
     this.velocity.set(velocity);
     //starts with no acceleration
     this.acceleration.set(0, 0);
+    this.glass = glass;
   }
 
   //second constructor that only gives a starting position
@@ -37,74 +41,79 @@ class Ball {
       airtime += 15;
     }
 
-    if (position.y < 450 && position.x >= 230 && position.x <= 670) { //if the ball is inside the bounds of the window, it is outside
+
+    if (position.y < glass.glassBottom && position.x >= glass.glassLeft && position.x <= glass.glassRight) { //if the ball is inside the bounds of the window, it is outside
       outside = true;
     }
-    //hide the ball if it is outside, and outside the boundaries of the window
-    if (isBroken && position.x > 680 && position.y > 170 && position.y < 470) hidden = true;
-    if (isBroken && position.x > 170 && position.x < 680 && position.y < 170 ) hidden = true;
-    if (isBroken && outside && position.y >= 450 && position.x >= 230 && position.x <= 670) hidden = true;
-  }
-
-
-  void display() {
-    if (hidden) return; //if hidden is true, stop rendering the ball by exiting the method early
-
-
-    imageMode(CENTER);
-    float currentSizeW = map(airtime, 0, 800, 120, 1); //maps the airtime variable with the currentsize variable
-    float currentSizeH = map(airtime, 0, 800, 120, 1);
-    currentSizeW = constrain(currentSizeW, 70, 150); //constrain the value of current size so the ball doesnt get smaller than those values
-    currentSizeH = constrain(currentSizeH, 50, 125);
-    image(ball, position.x, position.y, currentSizeW, currentSizeH); //makes the ball using the size and position that are caculated
-  }
 
 
 
-  boolean isOutOfScreen() { //check if the ball is out of screen
-    return (position.x < 0 ||
-      position.x > width ||
-      position.y < 0 ||
-      position.y > height);
-  }
-  void reset(PVector position) { //resets the ball to the starting position
-    this.position.set(position);
-    this.velocity.set(0, 0);
-    this.acceleration.set(0, 0);
-    this.startPos.set(position);
-    outside = false;
-    airtime = 0;
-    thrown = false;
-    hidden = false;
-  }
+    if (isBroken && outside && (
+      position.x > glass.glassRight ||   // flew out the right
+      position.x < glass.glassLeft  ||   // flew out the left
+      position.y > glass.glassBottom        // flew out the top
+      )) hidden = true;
+    }
 
-  void setPosition(PVector position) {
-    this.position.set(position);
-  }
 
-  void setVelocity(PVector velocity) {
-    this.velocity.set(velocity);
-  }
+    void display() {
+      if (hidden) return; //if hidden is true, stop rendering the ball by exiting the method early
 
-  void setAcceleration(PVector acceleration) {
-    this.acceleration.set(acceleration);
-  }
 
-  void resetsize() { //so when dragging mouse and not pressing r, the ball is not tiny
-    outside = false;
-    airtime = 0;
-    thrown = false;
-    hidden = false;
-  }
-  //makes the ball collide with the dog
-  void collidedog(Dog dog) {
-    if (position.x >= dog.dogPos.x - dog.dogWidth/2 &&
-      position.x <= dog.dogPos.x + dog.dogWidth/2 &&
-      position.y >= dog.dogPos.y - dog.dogHeight/2 &&
-      position.y <= dog.dogPos.y + dog.dogHeight/2) {
+      imageMode(CENTER);
+      currentSizeW = map(airtime, 0, 800, 120, 1); //maps the airtime variable with the currentsize variable
+      currentSizeH = map(airtime, 0, 800, 120, 1);
+      currentSizeW = constrain(currentSizeW, 70, 150); //constrain the value of current size so the ball doesnt get smaller than those values
+      currentSizeH = constrain(currentSizeH, 50, 125);
+      image(ball, position.x, position.y, currentSizeW, currentSizeH); //makes the ball using the size and position that are caculated
+    }
 
-      velocity.x *= -1;
-      velocity.y *= -1;
+
+
+    boolean isOutOfScreen() { //check if the ball is out of screen
+      return (position.x < 0 ||
+        position.x > width ||
+        position.y < 0 ||
+        position.y > height);
+    }
+    void reset(PVector position) { //resets the ball to the starting position
+      this.position.set(position);
+      this.velocity.set(0, 0);
+      this.acceleration.set(0, 0);
+      this.startPos.set(position);
+      outside = false;
+      airtime = 0;
+      thrown = false;
+      hidden = false;
+    }
+
+    void setPosition(PVector position) {
+      this.position.set(position);
+    }
+
+    void setVelocity(PVector velocity) {
+      this.velocity.set(velocity);
+    }
+
+    void setAcceleration(PVector acceleration) {
+      this.acceleration.set(acceleration);
+    }
+
+    void resetsize() { //so when dragging mouse and not pressing r, the ball is not tiny
+      outside = false;
+      airtime = 0;
+      thrown = false;
+      hidden = false;
+    }
+    //makes the ball collide with the dog
+    void collidedog(Dog dog) {
+      if (position.x >= dog.dogPos.x - dog.dogWidth/2 &&
+        position.x <= dog.dogPos.x + dog.dogWidth/2 &&
+        position.y >= dog.dogPos.y - dog.dogHeight/2 &&
+        position.y <= dog.dogPos.y + dog.dogHeight/2) {
+
+        velocity.x *= -1;
+        velocity.y *= -1;
+      }
     }
   }
-}

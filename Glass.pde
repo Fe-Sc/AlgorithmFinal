@@ -2,17 +2,15 @@ class Glass {
   Ball ball;
   int hitCount = 0;
   boolean isInside = false; //variable to see if the ball was inside the glass area at the previous frames, so hit is only registered as the ball touches the glass
-
+  float glassLeft = 225;
+  float glassRight = 670;
+  float glassTop = 170;
+  float glassBottom = 460;
   void display() {
-
-
-
-
-
-    
     if (hitCount < 2) {
       fill(#EDEDED, 180);
-      rect(451, 320, 450, 300);
+      rectMode(CORNER);
+      rect(glassLeft, glassTop, 450, 300);
     }
     if (hitCount == 1) {  //make crack appear when hit
       stroke(#858585);
@@ -39,15 +37,15 @@ class Glass {
   }
 
   boolean isHit(PVector ballPos) {
-    return (ballPos.x > 230 && ballPos.x < 800 && ballPos.y > 350 && ballPos.y < 400);
+    return (ballPos.x > glassLeft && ballPos.x < glassRight && ballPos.y > glassTop && ballPos.y < glassBottom);
   } //returns true if the ball is inside the glass area, and false if it isnt
 
   void collide(Ball ball) { //checks if ball colides with glass
     if (hitCount <= 2) {
-      if (ball.position.x > 230 &&
-        ball.position.x < 800 &&
-        ball.position.y > 320 &&
-        ball.position.y < 400) {
+      if (ball.position.x > glassLeft &&
+        ball.position.x < glassRight &&
+        ball.position.y > glassTop &&
+        ball.position.y < glassBottom) {
 
         //ball bounces back when it hits the glass
         ball.velocity.x *= -0.9;

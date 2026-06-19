@@ -9,6 +9,7 @@ class Bird {
   float maxSpeed;    // Maximum speed
   PImage bird;
 
+
   Bird(float x, float y) { //gives the bird a position
     acceleration = new PVector(0, 0); //starts without acceleration
     velocity = new PVector(random(-2, 2), random(-2, 2)); //gives a random velocity
@@ -35,17 +36,20 @@ class Bird {
     PVector sep = separate(birds);   //separation (makes sure the birds dont touch each other, steer away from other birds)
     PVector ali = align(birds);      //alignment (how much they copy other birds directoins)
     PVector coh = cohesion(birds);   //cohesion (how close are they to one another)
+    PVector obs = avoidball(ball);
 
 
     //arbitrarily weight these forces
     sep.mult(1.0);
     ali.mult(0.3);
     coh.mult(0.4);
+    obs.mult(50);
 
     //add the force
     applyForce(sep);
     applyForce(ali);
     applyForce(coh);
+    applyForce(obs);
   }
 
   //method to update position
@@ -180,5 +184,32 @@ class Bird {
     } else {
       return new PVector(0, 0);
     }
+  }
+
+  //avoiding the ball
+  //what happens here is essentially the same as seperation, but compares with the ball and doesnt average positions as you are only comparing with 1 thing, the ball
+  PVector avoidball (Ball ball) {
+    float desiredseparation = ball.currentSizeW + 10.0f;
+    PVector steer = new PVector(0, 0, 0);
+    float d = PVector.dist(position, ball.position);
+
+    if ((d > 0) && (d < desiredseparation)) {
+      // Calculate vector pointing away from ball
+      PVector diff = PVector.sub(position, ball.position);
+      diff.normalize();
+      diff.div(d);        // Weight by distance
+      steer.add(diff);
+    }
+
+
+    // As long as the vector is greater than 0
+    if (steer.mag() > 0) {
+      //  Steering = Desired - Velocity
+      steer.normalize();
+      steer.mult(maxSpeed);
+      steer.sub(velocity);
+      steer.limit(maxForce);
+    }
+    return steer;
   }
 }

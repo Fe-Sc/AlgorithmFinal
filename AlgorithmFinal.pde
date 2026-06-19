@@ -27,9 +27,9 @@ void setup() {
   room = new Room();
   dog = new Dog(new PVector(770, 600),200, 200);
   television = new Television();
-  ball = new Ball(new PVector(170, 570));  //sets up the ball in the start position
+    glass = new Glass();
+  ball = new Ball(new PVector(170, 570),  new PVector(0,0), glass);  //sets up the ball in the start position
   hand = new Hand(new PVector(100, 550), ball); //gives the hand a start postition and the ability to interact with the ball
-  glass = new Glass();
   hs = new hairSystem();
   flock = new Flock();
   painting = new Painting(720, 200, 100, 200); //spawns the painting in a certain place
@@ -58,6 +58,7 @@ void draw() {
   hand.display();
   hs.updateHair();
   painting.display();
+  println(mouseX,mouseY);
 }
 
 void mouseDragged() {
