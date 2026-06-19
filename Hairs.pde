@@ -32,11 +32,7 @@ class hair {
     rect(0, 0, 1, 8); //to draw the rect relative to the translated origin
     popMatrix();
   }
-  boolean isDead() { //true if hair should be removed, false otherwise
-    if (lifespan < 0.0) {
-      return true;
-    } else {
-      return false;
-    }
+  boolean isDead() {
+    return lifespan < 0;
   }
 }
