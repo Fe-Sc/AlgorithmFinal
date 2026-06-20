@@ -6,11 +6,15 @@ class Glass {
   float glassRight = 670;
   float glassTop = 170;
   float glassBottom = 460;
+  float glassWidth = 450;
+  float glassHeight = 300;
+
   void display() {
     if (hitCount < 2) {
       fill(#EDEDED, 180);
       rectMode(CORNER);
-      rect(glassLeft, glassTop, 450, 300);
+      rect(glassLeft, glassTop, glassWidth,  glassHeight);
+      rectMode(CENTER);
     }
     if (hitCount == 1) {  //make crack appear when hit
       stroke(#858585);

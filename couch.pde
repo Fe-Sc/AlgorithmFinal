@@ -1,6 +1,6 @@
 class Dog {
   //making the images variables
-  PImage sieb;
+  PImage dog;
   PImage cloth;
   float dogWidth;
   float dogHeight;
@@ -9,7 +9,7 @@ class Dog {
   
   Dog(PVector position, float dw, float dh) {
     //loads images needed
-    sieb = loadImage("siebster.png");
+    dog = loadImage("siebster.png");
     cloth = loadImage("kleedje.jpg");
     dogWidth = dw;
     dogHeight = dh;
@@ -28,7 +28,7 @@ class Dog {
     endShape(CLOSE);
     //displays the dog
     imageMode(CENTER);
-    image(sieb, dogPos.x, dogPos.y, dogWidth, dogHeight);
+    image(dog, dogPos.x, dogPos.y, dogWidth, dogHeight);
   }
 
   //checkes wether the input x and y are inside the area of the dog and returns true or false, for the hair particle system 

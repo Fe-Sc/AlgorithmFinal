@@ -27,7 +27,7 @@ class hair {
     //decreases the lifespan every frame
     lifespan -= 2.0;
     //wind
-    windforce = new PVector(random(-0.5, 0.5), 0);
+    windforce.set(random(-0.5, 0.55), 0);
     if (glass.isBroken()){
       velocity.add(windforce);
     }
