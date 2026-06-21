@@ -1,4 +1,7 @@
-class Hand { //<>//
+
+//handles the logic behind dragging and launching the ball with the mouse
+
+class Hand { 
   PImage hand;
   Ball ball;
   PVector mousePos = new PVector();

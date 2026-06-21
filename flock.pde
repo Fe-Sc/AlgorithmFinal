@@ -1,4 +1,7 @@
 ////Flocking code based on flocking code (boids flocking) by Daniel Shiffman, modified and used by Fernando Schintz and Tim Goedejohan
+
+//handles the array for flocking
+
 class Flock {
   Bird[]  birds;
   int birdCount = 0;

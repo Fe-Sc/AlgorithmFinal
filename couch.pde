@@ -1,3 +1,4 @@
+//displays the dog and its cloth
 class Dog {
   //making the images variables
   PImage dog;

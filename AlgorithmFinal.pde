@@ -8,6 +8,9 @@
 //fabric texture: https://www.magnific.com/free-photo/fabric-texture-background_1161816.htm#fromView=search&page=1&position=8&uuid=7ab45240-6ad9-4920-8d6e-881538ca5269&query=Flat+rug+fabric+texture
 
 
+//The main file
+
+
 //making the variables
 Room room;
 Dog dog;

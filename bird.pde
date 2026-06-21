@@ -1,4 +1,7 @@
 //Flocking code based on flocking code (boids flocking) by Daniel Shiffman, modified and used by Fernando Schintz and Tim Goedejohan
+
+//The class in which the logic is handeled for flocking
+
 class Bird {
 
   PVector position;

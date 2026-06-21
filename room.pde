@@ -1,4 +1,5 @@
-class Room { //class for the boundaries of the room including the plant and the window
+//class for the boundaries of the room including the plant and the window
+class Room { 
   //makes the images variables
   PImage pot;
   PImage plant;

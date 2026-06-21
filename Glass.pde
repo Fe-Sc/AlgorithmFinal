@@ -1,3 +1,6 @@
+
+//handles the logic behind the glass, how it should behave in every state and relations with the ball
+
 class Glass {
   Ball ball;
   int hitCount = 0;

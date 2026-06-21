@@ -1,3 +1,4 @@
+//handels the rendering logic behind the mass spring damper / water system
 class Watermanagement {
   float mass = 2;
   float springConstant = 0.1;

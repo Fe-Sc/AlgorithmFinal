@@ -1,3 +1,5 @@
+//makes the painting and normal distribution
+
 class Painting {
   float x, y, w, h;
 

@@ -1,3 +1,4 @@
+//renders the television and its perlin noise
 class Television {
   float t = 0; // time offset for z-coordinate in noise space
   boolean isOn = false;

@@ -1,3 +1,6 @@
+
+//handles the physics, rendering, and state management of the tennis ball
+
 class Ball {
   PImage ball;
   PVector position = new PVector();

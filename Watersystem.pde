@@ -1,3 +1,4 @@
+// handles the physics of the mass spring damper / water system
 class WaterSystem {
   float mass;
   float force;
