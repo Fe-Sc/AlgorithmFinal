@@ -30,11 +30,11 @@ void setup() {
     glass = new Glass();
   ball = new Ball(new PVector(170, 570),  new PVector(0,0), glass);  //sets up the ball in the start position
   hand = new Hand(new PVector(100, 550), ball); //gives the hand a start postition and the ability to interact with the ball
-  hs = new hairSystem();
-  flock = new Flock();
+    water = new Watermanagement();
+  hs = new hairSystem(water);
+  flock = new Flock(30);
   painting = new Painting(720, 200, 100, 200); //spawns the painting in a certain place
-  water = new Watermanagement();
-  for (int i = 0; i < 30; i++) { // Generate six birds when running program
+  for (int i = 0; i < flock.birds.length; i++) { // Generate birds at the start, amount equal to birdCount
     Bird bird = new Bird(width/2, height/2);
     flock.addBird(bird);
   }

@@ -20,8 +20,8 @@ class Bird {
     bird = loadImage("flyingbird.png");
   }
 
-  void run(ArrayList<Bird> birds) {
-    flock(birds);
+  void run(Bird[] birds, int birdCount) {
+    flock(birds, birdCount);
     update();
     borders();
     render();
@@ -32,10 +32,10 @@ class Bird {
   }
 
 
-  void flock(ArrayList<Bird> birds) {
-    PVector sep = separate(birds);   //separation (makes sure the birds dont touch each other, steer away from other birds)
-    PVector ali = align(birds);      //alignment (how much they copy other birds directoins)
-    PVector coh = cohesion(birds);   //cohesion (how close are they to one another)
+  void flock(Bird[] birds, int birdCount) {
+    PVector sep = separate(birds, birdCount);   //separation (makes sure the birds dont touch each other, steer away from other birds)
+    PVector ali = align(birds, birdCount);      //alignment (how much they copy other birds directoins)
+    PVector coh = cohesion(birds, birdCount);   //cohesion (how close are they to one another)
     PVector obs = avoidball(ball);
 
 
@@ -108,12 +108,13 @@ class Bird {
 
   //separation
   //method checks for nearby birds and let members steer away
-  PVector separate (ArrayList<Bird> birds) {
+  PVector separate (Bird[] birds, int birdCount) {
     float desiredSeparation = 25.0f;
     PVector steer = new PVector(0, 0, 0);
     int count = 0;
     //for every bird in the system check if it is close
-    for (Bird other : birds) {
+    for (int i = 0; i < birdCount; i++) {
+      Bird other = birds[i];
       float d = PVector.dist(position, other.position);
       //if the distance is greater than 0 and less than an arbitrary amount (0 when you are yourself)
       if ((d > 0) && (d < desiredSeparation)) {
@@ -142,11 +143,12 @@ class Bird {
 
   //alignment
   //for every nearby bird in the system calculate the average velocity
-  PVector align (ArrayList<Bird> birds) {
+  PVector align (Bird[] birds, int birdCount) {
     float neighborDist = 50;
     PVector sum = new PVector(0, 0);
     int count = 0;
-    for (Bird other : birds) {
+    for (int i = 0; i < birdCount; i++) {
+      Bird other = birds[i];
       float d = PVector.dist(position, other.position);
       if ((d > 0) && (d < neighborDist)) {
         sum.add(other.velocity);
@@ -167,11 +169,12 @@ class Bird {
 
   //cohesion
   //for the center of all nearby birds, steer towards that
-  PVector cohesion (ArrayList<Bird> birds) {
+  PVector cohesion (Bird[] birds, int birdCount) {
     float neighborDist = 50;
     PVector sum = new PVector(0, 0);   //start with empty vector
     int count = 0;
-    for (Bird other : birds) {
+    for (int i = 0; i < birdCount; i++) {
+      Bird other = birds[i];
       float d = PVector.dist(position, other.position);
       if ((d > 0) && (d < neighborDist)) {
         sum.add(other.position); //add position

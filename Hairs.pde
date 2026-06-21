@@ -6,8 +6,9 @@ class hair {
   float angle;
   Glass glass;
   PVector windforce;
+  Watermanagement wm;
 
-  hair(PVector pos, Glass g) {
+  hair(PVector pos, Glass g, Watermanagement wm) {
     //makes the velocity a random vector
     velocity = new PVector(random(-1.5, 1.5), random(0, 5));
     windforce = new PVector();
@@ -16,6 +17,7 @@ class hair {
     lifespan = 255.0;
     angle = random(-2, 2); //random angle
     glass = g;
+    this.wm = wm;
   }
   void run() {
     update();
@@ -31,6 +33,14 @@ class hair {
     if (glass.isBroken()){
       velocity.add(windforce);
     }
+
+    //logic to handle generating splashes in the bowl
+    if(position.x > wm.leftBound && position.x < wm.rightBound && position.y >= wm.topBound){ //checks if hair is inside the bounds of the waterbowl
+      int index = int((position.x - wm.leftBound) / 6); //check what segment the hair landed on and gives it a value of index, devide by 6 because the offset is 6, subtract leftbound to get a relative position
+      wm.watersystems[index].force = 3; //applies force
+      lifespan = -1; //kills the particle
+    }
+
   }
   void display() { //creates the hairs
     pushMatrix();

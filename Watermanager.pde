@@ -2,14 +2,18 @@ class Watermanagement {
   float mass = 2;
   float springConstant = 0.1;
   float damping = 0.98;
-
+  int leftBound = 600;
+  int rightBound = 655;
+  int topBound = 645;
+  int bottomBound = 680;
+  int bowlThickness = 15;
   WaterSystem[] watersystems;
 
   //fill array with objects
   Watermanagement() {
     watersystems = new WaterSystem[10];
     for (int i = 0; i < watersystems.length; i++) {
-      float offset = 600 + (i * 6);
+      float offset = 600 + (i * 6); //acts as the distance between individual water segments
       watersystems[i] = new WaterSystem(mass, springConstant, damping, new PVector(offset, 650));
     }
   }
@@ -38,13 +42,23 @@ class Watermanagement {
     }
 
     // fill the wave at the bottom left and bottom right corner
-    vertex(watersystems[watersystems.length - 1].position.x, 680);
-    vertex(watersystems[0].position.x, 680);
+    vertex(watersystems[watersystems.length - 1].position.x, bottomBound);
+    vertex(watersystems[0].position.x, bottomBound);
     endShape(CLOSE);
+
+        //the bowl
+    rectMode(CENTER);
+    stroke(#6F6F6F);
+    strokeWeight(5);
+    line(leftBound, bottomBound, leftBound, topBound);
+    line(rightBound, bottomBound, rightBound, topBound);
+    fill(#6F6F6F);
+    rect((leftBound + rightBound) /2, bottomBound - 8, rightBound-leftBound, bowlThickness);
   }
 
+  
   void click(int watermx, int watermy) { //give a wave force
-    if (watermx > 600 && watermx < 655 && watermy > 645 && watermy < 680) {
+    if (watermx > leftBound && watermx < rightBound && watermy > topBound && watermy < bottomBound) {
       int wave = int(random(0, 10));
       watersystems[wave].force = 10;
     }

@@ -1,12 +1,14 @@
 //particle system partially based on code by Daniel Shiffman, modified and adjusted by Fernando Schintz and Tim Goedejohan
 class hairSystem {
   ArrayList<hair> hairs;
+  Watermanagement wm;
 
-  hairSystem() {
+  hairSystem(Watermanagement wm) {
     hairs = new ArrayList<hair>();
+    this.wm = wm;
   }
   void makeHair(PVector pos) {
-    hairs.add(new hair(new PVector(pos.x, pos.y), glass)); //add a new hair to the arraylist, at position pos.x and pos.y
+    hairs.add(new hair(new PVector(pos.x, pos.y), glass, wm)); //add a new hair to the arraylist, at position pos.x and pos.y and passes glass and watermanager object
   }
   void updateHair() {
     for (int i = hairs.size()-1; i >= 0; i--) {

@@ -34,13 +34,6 @@ class Room { //class for the boundaries of the room including the plant and the 
     image(pot, 150, 550, 150, 150);
     //plant green part
     image(plant, 150, 362, 300, 300);
-    //the bowl
-    stroke(#6F6F6F);
-    strokeWeight(5);
-    line(600, 680, 600, 645);
-    line(655, 680, 655, 645);
-    fill(#6F6F6F);
-    rect(628.5, 672, 54, 15);
     //the lamp
     stroke(#000000);
     strokeWeight(5);
