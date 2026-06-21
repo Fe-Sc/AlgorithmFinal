@@ -39,7 +39,7 @@ class Hand {
       PVector launch = PVector.sub(basePos, mousePos);
 
       // 2. Multiply by a small number to control the speed (sensitivity)
-      launch.mult(0.15);
+      launch.mult(0.13);
 
       // 3. Set the ball's velocity and give it gravity
       ball.setVelocity(launch);

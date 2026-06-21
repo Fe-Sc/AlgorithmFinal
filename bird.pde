@@ -46,7 +46,7 @@ class Bird {
     sep.mult(1.0);
     ali.mult(0.3);
     coh.mult(0.4);
-    obs.mult(50);
+    obs.mult(5);
 
     //add the force
     applyForce(sep);

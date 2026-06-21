@@ -18,14 +18,21 @@ class Dog {
   }
 
   void display() {
-    //displays the blanket
+    //displays the blanket using coordinates relative to the dog position
+    float clothLeft = dogPos.x - 115;
+    float clothRight = dogPos.x + 227;
+    float clothTop = dogPos.y - 23;
+    float clothBottom = dogPos.y + 100;
+    float clothTopRight = dogPos.x + 80;
+    float clothBottomRight = dogPos.x - 10;
+
     noStroke();
     beginShape();
     texture(cloth);
-    vertex(997, 700, 0, cloth.height);
-    vertex(850, 577, cloth.width, 0);
-    vertex(655, 577, 0, 0);
-    vertex(760, 700, cloth.width, cloth.height);
+    vertex(clothRight, clothBottom, 0, cloth.height);
+    vertex(clothTopRight, clothTop, cloth.width, 0);
+    vertex(clothLeft, clothTop, 0, 0);
+    vertex(clothBottomRight, clothBottom, cloth.width, cloth.height);
     endShape(CLOSE);
     //displays the dog
     imageMode(CENTER);
