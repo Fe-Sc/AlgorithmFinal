@@ -48,4 +48,20 @@ class Painting {
       }
     }
   }
+
+  void regenerate() {
+    float midX = x + (w / 2);
+    float sd = w * 0.12; // Controls the bell curve width
+
+    // Calculate the single X position for each line
+    for (int i = 0; i < totalLines; i++) {
+      xCoords[i] = midX + ((float) randomGaussian() * sd);
+    }
+  }
+
+  void click(int mx, int my) {
+    if (mx > x && mx < x + w && my > y && my < y + h) {
+      regenerate();
+    }
+  }
 }

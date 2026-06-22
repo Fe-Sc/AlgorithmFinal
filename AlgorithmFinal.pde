@@ -76,6 +76,7 @@ void draw() {
   }
 
   void mousePressed() {
+    painting.click(mouseX, mouseY); //checks if the painting is clicked
     television.click(mouseX, mouseY); //checks if TV is clicked
     water.click(mouseX, mouseY); //checks if the water is clicked
   }
