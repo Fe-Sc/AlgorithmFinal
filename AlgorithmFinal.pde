@@ -29,8 +29,8 @@ void setup() {
   //creating objects
   room = new Room();
   dog = new Dog(new PVector(770, 600), 200, 200);
-  television = new Television();
-  glass = new Glass();
+  television = new Television(463, 639, 401, 497, 550, 450);
+  glass = new Glass( 225, 675, 170, 465);
   ball = new Ball(new PVector(170, 570), new PVector(0, 0), glass);  //sets up the ball in the start position
   hand = new Hand(new PVector(100, 550), ball); //gives the hand a start postition and the ability to interact with the ball
   water = new Watermanagement();
@@ -64,26 +64,25 @@ void draw() {
   println(mouseX, mouseY);
 }
 
-void mouseDragged() {
-  hand.mouseDraggedEvent(new PVector(mouseX, mouseY)); //makes the position of the mouse a vector
-  if (dog.inside(mouseX, mouseY)) {
-    hs.makeHair(new PVector(mouseX, mouseY));
+  void mouseDragged() {
+    hand.mouseDraggedEvent(new PVector(mouseX, mouseY)); //makes the position of the mouse a vector
+    if (dog.inside(mouseX, mouseY)) {
+      hs.makeHair(new PVector(mouseX, mouseY));
+    }
   }
-}
 
-void mouseReleased() {
-  hand.mouseReleasedEvent(); //shoots the ball when the mouse is released
-}
-
-void mousePressed() {
-  television.click(mouseX, mouseY); //checks if TV is clicked
-  water.click(mouseX, mouseY); //checks if the water is clicked
-}
-
-//resets the ball using r or R
-void keyPressed() {
-  if (key == 'r' || key == 'R') {
-    hand.reset();
+  void mouseReleased() {
+    hand.mouseReleasedEvent(); //shoots the ball when the mouse is released
   }
-}
 
+  void mousePressed() {
+    television.click(mouseX, mouseY); //checks if TV is clicked
+    water.click(mouseX, mouseY); //checks if the water is clicked
+  }
+
+  //resets the ball using r or R
+  void keyPressed() {
+    if (key == 'r' || key == 'R') {
+      hand.reset();
+    }
+  }

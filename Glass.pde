@@ -5,13 +5,23 @@ class Glass {
   Ball ball;
   int hitCount = 0;
   boolean isInside = false; //variable to see if the ball was inside the glass area at the previous frames, so hit is only registered as the ball touches the glass
-  float glassLeft = 225;
-  float glassRight = 670;
-  float glassTop = 170;
-  float glassBottom = 460;
-  float glassWidth = 450;
-  float glassHeight = 300;
+  float glassLeft;
+  float glassRight;
+  float glassTop;
+  float glassBottom;
+  float glassWidth;
+  float glassHeight;
 
+  Glass(float glassLeft, float glassRight, float glassTop, float glassBottom){
+    this.glassLeft = glassLeft;
+    this.glassRight = glassRight;
+    this.glassTop = glassTop;
+    this.glassBottom = glassBottom;
+    this.glassWidth = glassRight-glassLeft;
+    this.glassHeight = glassBottom-glassTop;
+
+  
+  }
   void display() {
     if (hitCount < 2) {
       fill(#EDEDED, 180);

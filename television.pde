@@ -2,31 +2,44 @@
 class Television {
   float t = 0; // time offset for z-coordinate in noise space
   boolean isOn = false;
+  float leftBound, rightBound, topBound, bottomBound;  // screen bounds
+  float centerX, centerY;  // Base coordinates around the center of the tv
+
+  Television(float leftBound, float rightBound, float topBound, float bottomBound, float centerX, float centerY) {
+    this.leftBound = leftBound;
+    this.rightBound = rightBound;
+    this.topBound = topBound;
+    this.bottomBound = bottomBound;
+    this.centerX = centerX;
+    this.centerY = centerY;
+    this.t = 0;
+    this.isOn = false;
+  }
 
   void display() {
     fill(#000000);
     noStroke();
-    rect(550, 500, 60, 30);
+    rect(centerX, centerY + 50, 60, 30);
     strokeWeight(5);
     stroke(#838383);
     rectMode(CENTER);
-    rect(550, 450, 180, 100);
+    rect(centerX, centerY, 180, 100);
     fill(#AA7A00);
     noStroke();
     stroke(#745300);
-    rect(500, 565, 360, 100);
-    line(440, 515, 440, 615);
-    line(560, 515, 560, 615);
-    line(340, 555, 340, 575);
-    line(460, 555, 460, 575);
-    line(580, 555, 580, 575);
+    rect(centerX - 50, centerY + 115, 360, 100);
+    line(centerX - 110, centerY + 65, centerX - 110, centerY + 165);
+    line(centerX + 10, centerY + 65, centerX + 10, centerY + 165);
+    line(centerX - 210, centerY + 105, centerX - 210, centerY + 125);
+    line(centerX - 90, centerY + 105, centerX - 90, centerY + 125);
+    line(centerX + 30, centerY + 105, centerX + 30, centerY + 125);
   }
 
   void render() { //function to render the perlin noise of the static
     if (!isOn) return;
     noStroke();
-    for (int y = 401; y <497; y++) {
-      for (int x = 463; x < 639; x++) {
+    for (int y = (int)topBound; y < (int)bottomBound; y++) {
+      for (int x = (int)leftBound; x < (int)rightBound; x++) {
         float n = noise(x * 0.1, y * 0.1, t) * 255; //multiply by 0.1 to scale down the coordinates so neighboring pixels would be more similar (perlin noise is a map), then scale by 255 for color values
         fill(n); //fille the rect with the color of the noise, 0 is black, 255 is white
         rect(x, y, 1, 1);
@@ -36,7 +49,7 @@ class Television {
   }
 
   void click(int mx, int my) {
-    if (mx > 463 && mx < 639 && my > 401 && my < 497) {
+    if (mx > leftBound && mx < rightBound && my > topBound && my < bottomBound) {
       isOn = !isOn;
     }
   }
