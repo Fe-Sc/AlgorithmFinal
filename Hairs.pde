@@ -7,6 +7,7 @@ class hair {
   Glass glass;
   PVector windforce;
   Watermanagement wm;
+  float t = 0;
 
   hair(PVector pos, Glass g, Watermanagement wm) {
     //makes the velocity a random vector
@@ -29,7 +30,8 @@ class hair {
     //decreases the lifespan every frame
     lifespan -= 2.0;
     //wind
-    windforce.set(random(-0.5, 0.55), 0);
+    windforce.set(map(noise(t), 0, 1, -0.5, 0.5), 0);
+    t += 0.01;
     if (glass.isBroken()){
       velocity.add(windforce);
     }
