@@ -8,17 +8,21 @@ class Flock {
 
   Flock(int maxBirds) {
     birds = new Bird[maxBirds]; // Initialize the Array
+    for (int i = 0; i < birds.length; i++) { // Generate birds at the start, amount equal to birdCount
+      Bird bird = new Bird(width/2, height/2);
+      addBird(bird);
+    }
   }
 
-void run() {
-  for (int i = 0; i < birdCount; i++) {
-    birds[i].run(birds, birdCount);  
+  void run() {
+    for (int i = 0; i < birdCount; i++) {
+      birds[i].run(birds, birdCount);
+    }
   }
-}
 
- //add birds
+  //add birds
   void addBird(Bird b) {
-    if (birdCount < birds.length){
+    if (birdCount < birds.length) {
       birds[birdCount] = b;
       birdCount++;
     }

@@ -1,4 +1,3 @@
-//particle system partially based on code by Daniel Shiffman, modified and adjusted by Fernando Schintz and Tim Goedejohan
 //handles the logic and physics behind the hairs and their interaction with water
 class hair {
   PVector position;

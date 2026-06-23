@@ -11,7 +11,6 @@ class Ball {
   boolean thrown = false;
   boolean outside = false;
   boolean hidden = false;
-  Dog dog;
   float currentSizeW;
   float currentSizeH;
   Glass glass;

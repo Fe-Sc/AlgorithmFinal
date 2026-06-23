@@ -37,10 +37,7 @@ void setup() {
   hs = new hairSystem(water);
   flock = new Flock(30);
   painting = new Painting(720, 200, 100, 200); //spawns the painting in a certain place
-  for (int i = 0; i < flock.birds.length; i++) { // Generate birds at the start, amount equal to birdCount
-    Bird bird = new Bird(width/2, height/2);
-    flock.addBird(bird);
-  }
+  
 }
 
 //draws the objects
