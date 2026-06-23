@@ -13,9 +13,10 @@ class hairSystem {
   }
   void updateHair() {
     for (int i = hairs.size()-1; i >= 0; i--) {
-      hair p = hairs.get(i);
-      p.run();
-      if (p.isDead()) {   //removes hair from arraylist if lifespan is less than 0
+      hair h = hairs.get(i);
+      h.update();
+      h.display();
+      if (h.isDead()) {   //removes hair from arraylist if lifespan is less than 0
         hairs.remove(i);
       }
     }
