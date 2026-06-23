@@ -16,7 +16,7 @@ void run() {
   }
 }
 
-
+ //add birds
   void addBird(Bird b) {
     if (birdCount < birds.length){
       birds[birdCount] = b;
