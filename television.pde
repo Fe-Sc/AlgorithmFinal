@@ -2,8 +2,12 @@
 class Television {
   float t = 0; // time offset for z-coordinate in noise space
   boolean isOn = false;
-  float leftBound, rightBound, topBound, bottomBound;  // screen bounds
-  float centerX, centerY;  // Base coordinates around the center of the tv
+  float leftBound;
+  float rightBound;
+  float topBound;
+  float bottomBound;  // screen bounds
+  float centerX;
+  float centerY;  // Base coordinates around the center of the tv
 
   Television(float leftBound, float rightBound, float topBound, float bottomBound, float centerX, float centerY) {
     this.leftBound = leftBound;

@@ -9,8 +9,6 @@
 
 
 //The main file
-
-
 //making the variables
 Room room;
 Dog dog;
@@ -35,8 +33,8 @@ void setup() {
   hand = new Hand(new PVector(100, 550), ball); //gives the hand a start postition and the ability to interact with the ball
   water = new Watermanagement();
   hs = new hairSystem(water);
-  flock = new Flock(30);
-  painting = new Painting(720, 200, 100, 200); //spawns the painting in a certain place
+  flock = new Flock(30, ball);
+  painting = new Painting(720, 200, 100, 200); 
   
 }
 

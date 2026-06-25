@@ -71,13 +71,6 @@ class Ball {
     }
 
 
-
-    boolean isOutOfScreen() { //check if the ball is out of screen
-      return (position.x < 0 ||
-        position.x > width ||
-        position.y < 0 ||
-        position.y > height);
-    }
     void reset(PVector position) { //resets the ball to the starting position
       this.position.set(position);
       this.velocity.set(0, 0);

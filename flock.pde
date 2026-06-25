@@ -1,4 +1,3 @@
-////Flocking code based on flocking code (boids flocking) by Daniel Shiffman, modified and used by Fernando Schintz and Tim Goedejohan
 
 //handles the array for flocking
 
@@ -6,10 +5,10 @@ class Flock {
   Bird[]  birds;
   int birdCount = 0;
 
-  Flock(int maxBirds) {
+  Flock(int maxBirds, Ball ball) {
     birds = new Bird[maxBirds]; // Initialize the Array
     for (int i = 0; i < birds.length; i++) { // Generate birds at the start, amount equal to birdCount
-      Bird bird = new Bird(width/2, height/2);
+      Bird bird = new Bird(width/2, height/2, ball);
       addBird(bird);
     }
   }

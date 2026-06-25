@@ -1,4 +1,3 @@
-//Flocking code based on flocking code (boids flocking) by Daniel Shiffman, modified and used by Fernando Schintz and Tim Goedejohan
 
 //The class in which the logic is handeled for flocking
 
@@ -11,9 +10,11 @@ class Bird {
   float maxForce;    // Maximum steering force
   float maxSpeed;    // Maximum speed
   PImage bird;
+  Ball ball;
 
 
-  Bird(float x, float y) { //gives the bird a position
+  Bird(float x, float y, Ball ball) { //gives the bird a position and ball reference
+    this.ball = ball;
     acceleration = new PVector(0, 0); //starts without acceleration
     velocity = new PVector(random(-2, 2), random(-2, 2)); //gives a random velocity
     position = new PVector(x, y);
@@ -115,7 +116,7 @@ class Bird {
     float desiredSeparation = 25.0f;
     PVector steer = new PVector(0, 0, 0);
     int count = 0;
-    //for every bird in the system check if it is close
+    //loop for every bird in the system check if it is close
     for (int i = 0; i < birdCount; i++) {
       Bird other = birds[i];
       float d = PVector.dist(position, other.position);
@@ -193,7 +194,10 @@ class Bird {
   }
 
   //avoiding the ball
-  //what happens here is essentially the same as seperation, but compares with the ball and doesnt average positions as you are only comparing with 1 thing, the ball
+  //what happens here is essentially the same as seperation
+  //it treats the ball as a seperate unmoving "flock member"
+  //count is removed as it doesnt need to count the amount of members since there is only one
+  //so instead of looping through the bird array and calculating their distances, it only does it once for the ball object
   PVector avoidball (Ball ball) {
     float desiredseparation = ball.currentSizeW + 10.0f;
     PVector steer = new PVector(0, 0, 0);
@@ -206,8 +210,6 @@ class Bird {
       diff.div(d);        // Weight by distance
       steer.add(diff);
     }
-
-
     // As long as the vector is greater than 0
     if (steer.mag() > 0) {
       //  Steering = Desired - Velocity
