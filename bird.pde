@@ -1,4 +1,4 @@
-
+//Flocking code referenced from Daniel Shiffman's "The nature of code"
 //The class in which the logic is handeled for flocking
 
 class Bird {

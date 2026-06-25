@@ -1,4 +1,4 @@
-
+//Flocking code referenced from Daniel Shiffman's "The nature of code"
 //handles the array for flocking
 
 class Flock {
