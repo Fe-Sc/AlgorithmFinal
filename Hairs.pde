@@ -1,5 +1,6 @@
 //handles the logic and physics behind the hairs and their interaction with water
 //also handles wind physics for hairs
+//also handles lifetime of hairs on the ground
 class hair {
   PVector position;
   PVector velocity;
@@ -37,8 +38,8 @@ class hair {
         restTimer = 120; //frames the hairs sit on the bottom, 120 being 2 seconds
       }
     }
-
-    //when hair rests on ground, decreases restTimer every frame, pushes velocity.x towards 0 each frame and constrains it to not be lower than 0, to simulate hairs slowing down
+    //when hair rests on ground
+    //decreases restTimer every frame, pushes velocity.x towards 0 each frame and constrains it to not be lower than 0, to simulate hairs slowing down
     if (resting) {
       restTimer -= 1;
       if (velocity.x < 0){
@@ -52,8 +53,7 @@ class hair {
         lifespan = -1;
       }
     } else {
-      //decreases the lifespan every frame while flying
-      lifespan -= 2.0;
+      lifespan -= 2.0;       //decreases the lifespan every frame while flying
     }
     
     //creates wind whenever the glass is broken
